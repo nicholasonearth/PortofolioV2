@@ -1,0 +1,112 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #0A0E1A; color: #E8F4F8; overflow-x: hidden; }
+body.light { background: #F0F4F8; color: #0A0E1A; }
+
+/* ── Scroll progress bar ── */
+#progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #00D4FF, #7C3AED); z-index: 9999; transition: width 0.1s linear; }
+
+/* ── Particles canvas ── */
+#particles { position: absolute; inset: 0; pointer-events: none; }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0E1A; }
+::-webkit-scrollbar-thumb { background: #00D4FF; border-radius: 3px; }
+
+/* ── Reveal animation ── */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── Glassmorphism ── */
+.glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
+.glass-cyan { background: rgba(0,212,255,0.07); backdrop-filter: blur(12px); border: 1px solid rgba(0,212,255,0.15); }
+body.light .glass { background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.1); }
+body.light .glass-cyan { background: rgba(0,170,204,0.1); border: 1px solid rgba(0,170,204,0.2); }
+
+/* ── Gradient text ── */
+.gradient-text { background: linear-gradient(135deg, #00D4FF 0%, #7C3AED 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.gradient-text-2 { background: linear-gradient(135deg, #7EE8FA 0%, #A78BFA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ── Typing cursor ── */
+.typing-cursor::after { content: '|'; animation: blink 1s step-start infinite; color: #00D4FF; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ── Glow button ── */
+.btn-glow { position: relative; overflow: hidden; }
+.btn-glow::before { content: ''; position: absolute; inset: -2px; background: linear-gradient(45deg, #00D4FF, #7C3AED, #00D4FF); border-radius: inherit; z-index: -1; animation: glow-rotate 3s linear infinite; background-size: 300%; }
+@keyframes glow-rotate { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+
+/* ── Skill bar ── */
+.skill-bar-fill { width: 0; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* ── Timeline ── */
+.timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #00D4FF, #7C3AED); }
+.timeline-dot { position: absolute; left: 11px; width: 18px; height: 18px; border-radius: 50%; border: 2px solid #00D4FF; background: #0A0E1A; box-shadow: 0 0 10px rgba(0,212,255,0.5); }
+body.light .timeline-dot { background: #F0F4F8; }
+
+/* ── Project card 3D tilt ── */
+.card-tilt { transition: transform 0.3s ease, box-shadow 0.3s ease; transform-style: preserve-3d; }
+.card-tilt:hover { box-shadow: 0 25px 50px rgba(0,212,255,0.15); }
+
+/* ── Certificate card ── */
+.cert-card { transition: all 0.3s ease; }
+.cert-card:hover { transform: translateY(-8px); }
+
+/* ── Hamburger ── */
+.ham-line { display: block; width: 24px; height: 2px; background: #E8F4F8; transition: all 0.3s ease; }
+body.light .ham-line { background: #0A0E1A; }
+.ham-open .ham-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.ham-open .ham-line:nth-child(2) { opacity: 0; }
+.ham-open .ham-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ── Toast ── */
+.toast { position: fixed; bottom: 24px; right: 24px; z-index: 9999; transform: translateX(200%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.toast.show { transform: translateX(0); }
+
+/* ── Section heading accent ── */
+.section-accent { display: inline-block; height: 3px; width: 48px; background: linear-gradient(90deg, #00D4FF, #7C3AED); border-radius: 2px; margin-bottom: 8px; }
+
+/* ── Nav active ── */
+.nav-link { position: relative; }
+.nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #00D4FF; transition: width 0.3s ease; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ── Filter buttons ── */
+.filter-btn.active { background: linear-gradient(135deg, #00D4FF, #7C3AED); color: white; }
+
+/* ── Org card hover ── */
+.org-card { transition: all 0.3s ease; }
+.org-card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.4); }
+
+/* ── Light mode overrides ── */
+body.light { color: #0A0E1A; }
+body.light nav { background: rgba(240,244,248,0.9) !important; }
+body.light .text-slate-muted, body.light [class*="text-slate-"] { color: #4A5568 !important; }
+body.light .text-slate-light { color: #4A5568 !important; }
+body.light .text-bright { color: #0A0E1A !important; }
+body.light .section-bg { background: #F8FAFC; }
+body.light .card-bg { background: rgba(255,255,255,0.8); border-color: rgba(0,0,0,0.08); }
+body.light #mobile-menu { background: rgba(240,244,248,0.98) !important; }
+body.light #mobile-menu a { color: #0A0E1A !important; }
+body.light .timeline-dot { background: #F8FAFC; }
+
+/* ── Floating avatar ring ── */
+.avatar-ring { animation: spin-avatar 12s linear infinite; }
+@keyframes spin-avatar { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.avatar-ring-reverse { animation: spin-avatar-rev 8s linear infinite; }
+@keyframes spin-avatar-rev { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+
+/* ── Section separator ── */
+.section-sep { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent); margin: 0; }
+
+/* ── Stat counter ── */
+.stat-num { font-variant-numeric: tabular-nums; }
+
+/* ── Back to top ── */
+#back-top { opacity: 0; pointer-events: none; transition: all 0.3s ease; }
+#back-top.visible { opacity: 1; pointer-events: all; }
