@@ -1,297 +1,231 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nicholasonearth is Coming</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <title>Nicholas Devin Daniardi — Portfolio</title>
+  <meta name="description" content="Portfolio Nicholas Devin Daniardi — Mahasiswa Teknik Informatika yang berfokus pada Data Science, Machine Learning, dan Computer Networking." />
+  <meta name="author" content="Nicholas Devin Daniardi" />
+
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Syne', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            navy: {
-              950: '#050810',
-              900: '#0A0E1A',
-              800: '#0F1628',
-              700: '#161E38',
-              600: '#1E2A48',
-            },
-            cyan: {
-              electric: '#00D4FF',
-              soft: '#7EE8FA',
-              dim: '#0EA5C9',
-            },
-            violet: { accent: '#7C3AED', soft: '#A78BFA' },
-            slate: { muted: '#8892A4', light: '#B8C2D0', bright: '#E8F4F8' },
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 4s ease-in-out infinite',
-            'slide-up': 'slideUp 0.6s ease-out forwards',
-            'fade-in': 'fadeIn 0.8s ease-out forwards',
-            'glow': 'glow 2s ease-in-out infinite',
-            'spin-slow': 'spin 8s linear infinite',
-          },
-          keyframes: {
-            float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-20px)' } },
-            slideUp: { from: { opacity: 0, transform: 'translateY(30px)' }, to: { opacity: 1, transform: 'translateY(0)' } },
-            fadeIn: { from: { opacity: 0 }, to: { opacity: 1 } },
-            glow: { '0%,100%': { boxShadow: '0 0 20px rgba(0,212,255,0.3)' }, '50%': { boxShadow: '0 0 40px rgba(0,212,255,0.7)' } },
-          },
-          backdropBlur: { xs: '2px' },
-        },
-      },
-    };
-  </script>
-  
+  <!-- Design System Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body class="font-body">
+<body>
 
+  <!-- Scroll Progress Bar -->
   <div id="progress-bar" style="width:0%"></div>
 
+  <!-- Toast Notification -->
   <div class="toast" id="toast">
-    <div class="glass-cyan rounded-xl px-5 py-3 flex items-center gap-3">
-      <i class="fas fa-check-circle text-cyan-electric text-lg"></i>
-      <span id="toast-msg" class="text-sm font-body font-medium"></span>
+    <div class="toast-inner">
+      <i class="fas fa-check-circle"></i>
+      <span id="toast-msg"></span>
     </div>
   </div>
 
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(10,14,26,0.0);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#hero" class="font-display font-800 text-xl gradient-text tracking-wide">
-          Nicholasonearth
-        </a>
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav id="navbar" class="navbar">
+    <div class="navbar-inner">
+      <a href="#hero" class="navbar-logo">Nicholasonearth</a>
 
-        <div class="hidden md:flex items-center gap-7 text-sm font-medium">
-          <a href="#tentang" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Tentang</a>
-          <a href="#akademik" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Akademik</a>
-          <a href="#organisasi" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Organisasi</a>
-          <a href="#pengalaman" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Pengalaman</a>
-          <a href="#skill" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Skill</a>
-          <a href="#proyek" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Proyek</a>
-          <a href="#sertifikat" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Sertifikat</a>
-          <a href="#kontak" class="nav-link text-slate-light hover:text-cyan-electric transition-colors">Kontak</a>
-        </div>
+      <div class="navbar-links" id="desktop-nav">
+        <a href="#tentang" class="nav-link">Tentang</a>
+        <a href="#akademik" class="nav-link">Akademik</a>
+        <a href="#organisasi" class="nav-link">Organisasi</a>
+        <a href="#pengalaman" class="nav-link">Pengalaman</a>
+        <a href="#skill" class="nav-link">Skill</a>
+        <a href="#proyek" class="nav-link">Proyek</a>
+        <a href="#sertifikat" class="nav-link">Sertifikat</a>
+        <a href="#kontak" class="nav-link">Kontak</a>
+      </div>
 
-        <div class="flex items-center gap-3">
-          <button id="theme-toggle" class="w-9 h-9 rounded-full glass flex items-center justify-center hover:border-cyan-electric transition-colors" title="Toggle tema">
-            <i id="theme-icon" class="fas fa-moon text-sm text-cyan-electric"></i>
-          </button>
-          <button id="ham-btn" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-[6px]">
-            <span class="ham-line"></span>
-            <span class="ham-line"></span>
-            <span class="ham-line"></span>
-          </button>
-        </div>
+      <div class="navbar-actions">
+        <button id="theme-toggle" class="theme-toggle" title="Toggle tema">
+          <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
+        <button id="ham-btn" class="ham-btn">
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+          <span class="ham-line"></span>
+        </button>
       </div>
     </div>
 
-    <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 transition-all duration-500" style="background: rgba(10,14,26,0.98); backdrop-filter: blur(20px);">
-      <div class="px-6 py-6 flex flex-col gap-5 text-sm font-medium">
-        <a href="#tentang" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Tentang</a>
-        <a href="#akademik" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Akademik</a>
-        <a href="#organisasi" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Organisasi</a>
-        <a href="#pengalaman" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Pengalaman</a>
-        <a href="#skill" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Skill</a>
-        <a href="#proyek" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Proyek</a>
-        <a href="#sertifikat" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Sertifikat</a>
-        <a href="#kontak" class="mob-link text-slate-light hover:text-cyan-electric transition-colors py-1">Kontak</a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-inner">
+        <a href="#tentang" class="mob-link">Tentang</a>
+        <a href="#akademik" class="mob-link">Akademik</a>
+        <a href="#organisasi" class="mob-link">Organisasi</a>
+        <a href="#pengalaman" class="mob-link">Pengalaman</a>
+        <a href="#skill" class="mob-link">Skill</a>
+        <a href="#proyek" class="mob-link">Proyek</a>
+        <a href="#sertifikat" class="mob-link">Sertifikat</a>
+        <a href="#kontak" class="mob-link">Kontak</a>
       </div>
     </div>
   </nav>
 
-  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
-    <canvas id="particles"></canvas>
+  <!-- ═══ HERO SECTION ═══ -->
+  <section id="hero" class="hero">
+    <!-- Subtle decorative blobs -->
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
 
-    <div class="absolute top-1/4 -left-40 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #00D4FF, transparent);"></div>
-    <div class="absolute bottom-1/4 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #7C3AED, transparent);"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <!-- Text Content -->
+        <div class="hero-content reveal" style="transition-delay: 0.1s">
+          <p class="hero-greeting">Halo, saya</p>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <div class="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20 py-28">
+          <h1 class="hero-name">Nicholas Devin Daniardi</h1>
 
-        <div class="flex-1 text-center lg:text-left">
-
-          <p class="text-slate-muted font-mono text-sm mb-3 reveal" style="transition-delay:0.1s">Halo, saya</p>
-
-          <h1 class="font-display font-800 text-5xl sm:text-6xl lg:text-7xl leading-tight mb-4 reveal" style="transition-delay:0.2s">
-            <span class="gradient-text">Nicholas Devin Daniardi</span>
-          </h1>
-
-          <h2 class="font-display text-xl sm:text-2xl text-slate-light mb-2 reveal" style="transition-delay:0.3s">
+          <h2 class="hero-role">
             <span id="typing-text" class="typing-cursor"></span>
           </h2>
 
-          <p class="text-slate-muted text-base max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8 reveal" style="transition-delay:0.4s">
+          <p class="hero-desc">
             Mahasiswa penuh semangat yang berfokus pada Data Science, Machine Learning, dan Computer Networking. Membangun solusi cerdas dari data yang kompleks.
           </p>
 
-          <div class="flex justify-center lg:justify-start gap-8 mb-8 reveal" style="transition-delay:0.5s">
-            <div class="text-center">
-              <div class="font-display font-800 text-3xl gradient-text stat-num" data-target="4">0</div>
-              <div class="text-xs text-slate-muted mt-1">Proyek Selesai</div>
+          <div class="hero-stats reveal" style="transition-delay: 0.3s">
+            <div class="hero-stat">
+              <div class="hero-stat-value stat-num" data-target="4">0</div>
+              <div class="hero-stat-label">Proyek Selesai</div>
             </div>
-            <div class="w-px bg-slate-700"></div>
-            <div class="text-center">
-              <div class="font-display font-800 text-3xl gradient-text stat-num" data-target="10">0</div>
-              <div class="text-xs text-slate-muted mt-1">Sertifikat</div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <div class="hero-stat-value stat-num" data-target="10">0</div>
+              <div class="hero-stat-label">Sertifikat</div>
             </div>
-            <div class="w-px bg-slate-700"></div>
           </div>
 
-          <div class="flex flex-wrap justify-center lg:justify-start gap-4 reveal" style="transition-delay:0.6s">
-            <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn-glow inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-navy-900 transition-all" style="background: linear-gradient(135deg, #00D4FF, #7C3AED);">
+          <div class="hero-actions reveal" style="transition-delay: 0.4s">
+            <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn-primary">
               <i class="fas fa-download"></i> Download CV
             </a>
-            <a href="https://wa.me/6289609100808" target="_blank" class="glass inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-cyan-electric hover:bg-white hover:bg-opacity-10 transition-all border border-cyan-electric">
+            <a href="https://wa.me/6289609100808" target="_blank" class="btn-secondary">
               <i class="fab fa-whatsapp"></i> Hubungi Saya
             </a>
           </div>
         </div>
 
-        <div class="flex-shrink-0 reveal" style="transition-delay:0.3s">
-          <div class="relative w-56 h-56 sm:w-72 sm:h-72 mx-auto animate-float">
-            <svg class="avatar-ring absolute inset-0 w-full h-full" viewBox="0 0 300 300">
-              <circle cx="150" cy="150" r="140" fill="none" stroke="url(#ringGrad1)" stroke-width="1.5" stroke-dasharray="8 12" />
-              <defs>
-                <linearGradient id="ringGrad1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#00D4FF" />
-                  <stop offset="100%" stop-color="#7C3AED" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <svg class="avatar-ring-reverse absolute inset-4 w-auto h-auto" viewBox="0 0 260 260">
-              <circle cx="130" cy="130" r="122" fill="none" stroke="#00D4FF" stroke-width="1" stroke-dasharray="4 16" opacity="0.5" />
-            </svg>
-            <div class="absolute inset-6 rounded-full overflow-hidden border-2 border-cyan-electric" style="box-shadow: 0 0 40px rgba(0,212,255,0.3);">
-              
-              <img
-                src="assets/img/FotoProfil.jpeg"
-                alt="Foto Profil"
-                class="w-full h-full object-cover"
-                id="profile-photo"
-              />
-
+        <!-- Avatar -->
+        <div class="hero-avatar-wrapper reveal" style="transition-delay: 0.2s">
+          <div class="hero-avatar">
+            <div class="hero-avatar-ring"></div>
+            <div class="hero-avatar-img">
+              <img src="assets/img/FotoProfil.jpeg" alt="Foto Profil Nicholas Devin Daniardi" id="profile-photo" />
             </div>
-            <div class="absolute -top-2 -right-2 glass-cyan rounded-full px-3 py-1 text-xs font-mono text-cyan-electric font-semibold">
-              Data Science
-            </div>
-            <div class="absolute -bottom-2 -left-4 glass-cyan rounded-full px-3 py-1 text-xs font-mono text-violet-soft font-semibold">
-              ML Engineer
-            </div>
+            <span class="hero-avatar-badge hero-avatar-badge-top badge badge-primary">Data Science</span>
+            <span class="hero-avatar-badge hero-avatar-badge-bottom badge badge-accent">ML Engineer</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-muted text-xs">
-      <span class="font-mono">scroll</span>
-      <div class="w-5 h-8 rounded-full border border-slate-700 flex items-start justify-center p-1">
-        <div class="w-1 h-2 bg-cyan-electric rounded-full animate-bounce"></div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>scroll</span>
+      <div class="scroll-indicator-track">
+        <div class="scroll-indicator-dot"></div>
       </div>
     </div>
   </section>
 
   <div class="section-sep"></div>
 
-  <section id="tentang" class="py-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row gap-16 items-start">
-        <div class="flex-1 reveal-left">
+  <!-- ═══ TENTANG (ABOUT) SECTION ═══ -->
+  <section id="tentang" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Left: About Text -->
+        <div class="about-content reveal-left">
           <div class="section-accent"></div>
-          <h2 class="font-display font-800 text-4xl sm:text-5xl mb-6">
-            Tentang <span class="gradient-text">Saya</span>
+          <h2 class="text-display" style="margin-bottom: 24px;">
+            Tentang <span class="text-accent">Saya</span>
           </h2>
-          <div class="space-y-4 text-slate-light leading-relaxed">
-            <p>
-  Saya adalah mahasiswa aktif di bidang Teknik Informatika yang memiliki passion besar terhadap <span class="text-cyan-electric font-medium">Data Science</span>, <span class="text-cyan-electric font-medium">Machine Learning</span>, dan <span class="text-cyan-electric font-medium">Computer Networking</span>. Saya percaya bahwa data adalah aset strategis yang paling berharga dalam mengakselerasi inovasi di era digital.
-</p>
-<p>
-  Selama perjalanan akademik, saya berkomitmen untuk menyeimbangkan penguasaan teori dengan implementasi praktis. Pengalaman profesional saya semakin diperkuat melalui program magang di <span class="gradient-text-2 font-semibold">PT Telkom Akses Simpang Lima</span>, di mana saya terlibat langsung dalam proyek digitalisasi yang memberikan wawasan mendalam mengenai operasional teknis berskala industri.
-</p>
-<p>
-  Dedikasi saya telah dibuktikan sejak jenjang SMK, di mana saya berhasil meraih gelar <span class="gradient-text-2 font-semibold">Siswa Berprestasi</span> serta mencatatkan prestasi sebagai peraih predikat <span class="gradient-text-2 font-semibold">Penyelesaian Uji Kompetensi Keahlian (UKK) Tercepat Kedua</span>.
-</p>
-<p>
-  Saat ini, saya sangat antusias untuk terus membangun sistem cerdas yang solutif dan memberikan dampak positif bagi masyarakat, dengan fokus utama pada pengembangan analisis data tingkat lanjut dan sistem otomasi berbasis <strong>AI</strong>.
-</p>
+          <div>
+            <p class="about-text">
+              Saya adalah mahasiswa aktif di bidang Teknik Informatika yang memiliki passion besar terhadap <span class="highlight">Data Science</span>, <span class="highlight">Machine Learning</span>, dan <span class="highlight">Computer Networking</span>. Saya percaya bahwa data adalah aset strategis yang paling berharga dalam mengakselerasi inovasi di era digital.
+            </p>
+            <p class="about-text">
+              Selama perjalanan akademik, saya berkomitmen untuk menyeimbangkan penguasaan teori dengan implementasi praktis. Pengalaman profesional saya semakin diperkuat melalui program magang di <span class="highlight-bold">PT Telkom Akses Simpang Lima</span>, di mana saya terlibat langsung dalam proyek digitalisasi yang memberikan wawasan mendalam mengenai operasional teknis berskala industri.
+            </p>
+            <p class="about-text">
+              Dedikasi saya telah dibuktikan sejak jenjang SMK, di mana saya berhasil meraih gelar <span class="highlight-bold">Siswa Berprestasi</span> serta mencatatkan prestasi sebagai peraih predikat <span class="highlight-bold">Penyelesaian Uji Kompetensi Keahlian (UKK) Tercepat Kedua</span>.
+            </p>
+            <p class="about-text">
+              Saat ini, saya sangat antusias untuk terus membangun sistem cerdas yang solutif dan memberikan dampak positif bagi masyarakat, dengan fokus utama pada pengembangan analisis data tingkat lanjut dan sistem otomasi berbasis <strong>AI</strong>.
+            </p>
           </div>
 
-          <div class="mt-8 grid grid-cols-2 gap-4">
-            <div class="glass rounded-xl p-4 flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-cyan-electric bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-map-marker-alt text-cyan-electric text-sm"></i>
+          <!-- Info cards -->
+          <div class="about-info-grid">
+            <div class="about-info-card">
+              <div class="about-info-icon">
+                <i class="fas fa-map-marker-alt"></i>
               </div>
               <div>
-                <div class="text-xs text-slate-muted">Lokasi</div>
-                <div class="text-sm font-medium text-bright">Indonesia</div>
+                <div class="about-info-label">Lokasi</div>
+                <div class="about-info-value">Indonesia</div>
               </div>
             </div>
-            
-            <div class="glass rounded-xl p-4 flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-green-500 bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-envelope text-green-400 text-sm"></i>
+            <div class="about-info-card">
+              <div class="about-info-icon" style="background: rgba(40,167,69,0.08); color: #28a745;">
+                <i class="fas fa-envelope"></i>
               </div>
               <div>
-                <div class="text-xs text-slate-muted">Email</div>
-                <div class="text-sm font-medium text-bright">nicholasdevin9@gmail.com</div>
+                <div class="about-info-label">Email</div>
+                <div class="about-info-value">nicholasdevin9@gmail.com</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="flex-1 reveal-right">
-          <div class="glass rounded-2xl p-6 mb-6">
-            <h3 class="font-display font-700 text-lg mb-4 text-bright">⚡ Yang Saya Sukai</h3>
-            <div class="space-y-3">
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-brain text-cyan-electric w-5"></i>
-                <span class="text-slate-light">Membangun Solusi AI & ML</span>
-              </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-network-wired text-violet-soft w-5"></i>
-                <span class="text-slate-light">Analisis & Visualisasi Data</span>
-              </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-chart-bar text-cyan-electric w-5"></i>
-                <span class="text-slate-light">Infrastruktur & Jaringan</span>
-              </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fab fa-python text-yellow-400 w-5"></i>
-                <span class="text-slate-light">Otomasi & Efisiensi</span>
-              </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-database text-green-400 w-5"></i>
-                <span class="text-slate-light">Eksplorasi Data</span>
-              </div>
+        <!-- Right: Interests & Tech Stack -->
+        <div class="about-sidebar reveal-right">
+          <div class="card interest-card">
+            <h3>⚡ Yang Saya Sukai</h3>
+            <div class="interest-item">
+              <i class="fas fa-brain"></i>
+              <span>Membangun Solusi AI & ML</span>
+            </div>
+            <div class="interest-item">
+              <i class="fas fa-network-wired"></i>
+              <span>Analisis & Visualisasi Data</span>
+            </div>
+            <div class="interest-item">
+              <i class="fas fa-chart-bar"></i>
+              <span>Infrastruktur & Jaringan</span>
+            </div>
+            <div class="interest-item">
+              <i class="fab fa-python"></i>
+              <span>Otomasi & Efisiensi</span>
+            </div>
+            <div class="interest-item">
+              <i class="fas fa-database"></i>
+              <span>Eksplorasi Data</span>
             </div>
           </div>
 
-          <div class="glass rounded-2xl p-6">
-            <h3 class="font-display font-700 text-lg mb-4 text-bright">🛠️ Tech Stack</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">Python</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">TensorFlow</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">Scikit-learn</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-violet-soft">Pandas</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-violet-soft">NumPy</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">Cisco Packet Tracer</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-violet-soft">Tableau</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">Matplotlib</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-violet-soft">Power BI</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">SQL</span>
-              <span class="tech-badge glass-cyan px-3 py-1 rounded-full text-xs font-mono text-cyan-electric">Git</span>
+          <div class="card tech-stack-card">
+            <h3>🛠️ Tech Stack</h3>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">TensorFlow</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">Cisco Packet Tracer</span>
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">Matplotlib</span>
+              <span class="tech-tag">Power BI</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">Git</span>
             </div>
           </div>
         </div>
@@ -301,797 +235,720 @@
 
   <div class="section-sep"></div>
 
-  <section id="akademik" class="py-24 px-4 sm:px-6 lg:px-8" style="background: rgba(255,255,255,0.02);">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16 reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Riwayat <span class="gradient-text">Akademik</span>
-        </h2>
-        <p class="text-slate-muted mt-4 max-w-lg mx-auto">Perjalanan pendidikan formal yang membentuk fondasi keilmuan saya.</p>
+  <!-- ═══ AKADEMIK (EDUCATION) SECTION ═══ -->
+  <section id="akademik" class="section section-alt">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Riwayat <span class="accent">Akademik</span></h2>
+        <p>Perjalanan pendidikan formal yang membentuk fondasi keilmuan saya.</p>
       </div>
 
-      <div class="relative pl-12">
+      <div class="timeline">
         <div class="timeline-line"></div>
 
-        <div class="relative mb-12 reveal" style="transition-delay:0.0s">
-          <div class="timeline-dot" style="top: 20px;"></div>
-          <div class="glass rounded-2xl p-6 hover:border-cyan-electric border border-transparent transition-all duration-300">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-                  🏫
-                </div>
+        <!-- SD -->
+        <div class="timeline-item reveal" style="transition-delay: 0s">
+          <div class="timeline-dot"></div>
+          <div class="card timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-header-left">
+                <div class="timeline-icon">🏫</div>
                 <div>
-                  <div class="font-mono text-xs text-cyan-electric mb-1">2013 – 2018</div>
-                  <h3 class="font-display font-700 text-lg text-bright">Sekolah Dasar</h3>
-                  <p class="text-slate-muted text-sm">SD Yadika 3 — Kota Tangerang</p>
+                  <div class="timeline-date">2013 – 2018</div>
+                  <div class="timeline-title">Sekolah Dasar</div>
+                  <div class="timeline-subtitle">SD Yadika 3 — Kota Tangerang</div>
                 </div>
               </div>
-              <div class="glass-cyan rounded-lg px-3 py-1 text-xs font-mono text-cyan-electric">Lulus</div>
+              <span class="badge badge-default">Lulus</span>
             </div>
           </div>
         </div>
 
-        <div class="relative mb-12 reveal" style="transition-delay:0.15s">
-          <div class="timeline-dot" style="top: 20px;"></div>
-          <div class="glass rounded-2xl p-6 hover:border-cyan-electric border border-transparent transition-all duration-300">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-                  🏢
-                </div>
+        <!-- SMP -->
+        <div class="timeline-item reveal" style="transition-delay: 0.1s">
+          <div class="timeline-dot"></div>
+          <div class="card timeline-card">
+            <div class="timeline-card-header">
+              <div class="timeline-card-header-left">
+                <div class="timeline-icon">🏢</div>
                 <div>
-                  <div class="font-mono text-xs text-cyan-electric mb-1">2018 – 2021</div>
-                  <h3 class="font-display font-700 text-lg text-bright">Sekolah Menengah Pertama</h3>
-                  <p class="text-slate-muted text-sm">SMP Negeri 24 Tangerang — Kota Tangerang</p>
+                  <div class="timeline-date">2018 – 2021</div>
+                  <div class="timeline-title">Sekolah Menengah Pertama</div>
+                  <div class="timeline-subtitle">SMP Negeri 24 Tangerang — Kota Tangerang</div>
                 </div>
               </div>
-              <div class="glass-cyan rounded-lg px-3 py-1 text-xs font-mono text-cyan-electric">Lulus</div>
+              <span class="badge badge-default">Lulus</span>
             </div>
           </div>
         </div>
 
-        <div class="relative mb-12 reveal" style="transition-delay:0.3s">
-          <div class="timeline-dot" style="top: 20px; border-color: #F59E0B;"></div>
-          <div class="glass rounded-2xl p-6 border border-yellow-500 border-opacity-30" style="box-shadow: 0 0 20px rgba(245,158,11,0.1);">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(234,88,12,0.15));">
-                  🏆
-                </div>
+        <!-- SMK (Highlighted) -->
+        <div class="timeline-item reveal" style="transition-delay: 0.2s">
+          <div class="timeline-dot timeline-dot-highlight"></div>
+          <div class="card timeline-card" style="border-color: rgba(217,119,6,0.25);">
+            <div class="timeline-card-header">
+              <div class="timeline-card-header-left">
+                <div class="timeline-icon" style="background: rgba(245,158,11,0.08);">🏆</div>
                 <div>
-                  <div class="font-mono text-xs text-yellow-400 mb-1">2021 – 2025</div>
-                  <h3 class="font-display font-700 text-lg text-bright">Sekolah Menengah Kejuruan</h3>
-                  <p class="text-slate-muted text-sm">SMK Walisongo Semarang — Teknik Jaringan Komputer & Telekomunikasi</p>
+                  <div class="timeline-date" style="color: #d97706;">2021 – 2025</div>
+                  <div class="timeline-title">Sekolah Menengah Kejuruan</div>
+                  <div class="timeline-subtitle">SMK Walisongo Semarang — Teknik Jaringan Komputer & Telekomunikasi</div>
                 </div>
               </div>
-              <div class="rounded-lg px-3 py-1 text-xs font-mono font-semibold" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(234,88,12,0.15)); color: #FBBF24; border: 1px solid rgba(245,158,11,0.3);">
-                Lulus
-              </div>
+              <span class="badge badge-warning">Lulus</span>
             </div>
-            <div class="mt-4 inline-flex items-center gap-2 rounded-xl px-4 py-2" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(234,88,12,0.1)); border: 1px solid rgba(245,158,11,0.25);">
-              <span class="text-yellow-400 text-base">🌟</span>
+
+            <div class="timeline-achievement">
+              <span>🌟</span>
               <div>
-                <div class="text-xs font-semibold text-yellow-400">Siswa Berprestasi</div>
-                <div class="text-xs text-slate-muted">Penghargaan atas dedikasi dan prestasi akademik terbaik</div>
+                <div class="timeline-achievement-title">Siswa Berprestasi</div>
+                <div class="timeline-achievement-desc">Penghargaan atas dedikasi dan prestasi akademik terbaik</div>
               </div>
             </div>
-            <div class="mt-4 inline-flex items-center gap-2 rounded-xl px-4 py-2" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(234,88,12,0.1)); border: 1px solid rgba(245,158,11,0.25);">
-              <span class="text-yellow-400 text-base">🌟</span>
+
+            <div class="timeline-achievement">
+              <span>🌟</span>
               <div>
-                <div class="text-xs font-semibold text-yellow-400">
-PT Telkom Akses (Simpang Lima) | Divisi Digitalisasi SPBU</div>
-                <div class="text-xs text-slate-muted">
-Sebagai Technical Support Specialist Intern di PT Telkom Akses (Januari – Mei 2024), saya mendukung operasional infrastruktur IT dan pemeliharaan jaringan pada proyek digitalisasi SPBU. Pengalaman ini mengasah keahlian network engineering, troubleshooting teknis, dan kolaborasi dalam lingkungan korporasi</div>
+                <div class="timeline-achievement-title">PT Telkom Akses (Simpang Lima) | Divisi Digitalisasi SPBU</div>
+                <div class="timeline-achievement-desc">Sebagai Technical Support Specialist Intern di PT Telkom Akses (Januari – Mei 2024), saya mendukung operasional infrastruktur IT dan pemeliharaan jaringan pada proyek digitalisasi SPBU.</div>
               </div>
             </div>
-            <div class="mt-4 inline-flex items-center gap-2 rounded-xl px-4 py-2" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(234,88,12,0.1)); border: 1px solid rgba(245,158,11,0.25);">
-              <span class="text-yellow-400 text-base">🌟</span>
+
+            <div class="timeline-achievement">
+              <span>🌟</span>
               <div>
-                <div class="text-xs font-semibold text-yellow-400">
-Peraih Prestasi Tercepat ke-2 dalam Uji Kompetensi Kejuruan (UKK)</div>
-                <div class="text-xs text-slate-muted">Diakui sebagai peserta dengan penyelesaian tugas tercepat kedua pada Uji Kompetensi Keahlian (UKK) di bidang Teknik Jaringan Komputer dan Telekomunikasi.</div>
+                <div class="timeline-achievement-title">Peraih Prestasi Tercepat ke-2 dalam Uji Kompetensi Kejuruan (UKK)</div>
+                <div class="timeline-achievement-desc">Diakui sebagai peserta dengan penyelesaian tugas tercepat kedua pada Uji Kompetensi Keahlian (UKK) di bidang Teknik Jaringan Komputer dan Telekomunikasi.</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="relative reveal" style="transition-delay:0.45s">
-          <div class="timeline-dot" style="top: 20px; border-color: #7C3AED; box-shadow: 0 0 12px rgba(124,58,237,0.5);"></div>
-          <div class="glass rounded-2xl p-6 border border-violet-accent border-opacity-30" style="box-shadow: 0 0 20px rgba(124,58,237,0.1);">
-            <div class="flex flex-wrap items-start justify-between gap-3">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(0,212,255,0.15));">
-                  🎓
-                </div>
+        <!-- Perguruan Tinggi (Active) -->
+        <div class="timeline-item reveal" style="transition-delay: 0.3s">
+          <div class="timeline-dot timeline-dot-active"></div>
+          <div class="card timeline-card" style="border-color: rgba(124,58,237,0.25);">
+            <div class="timeline-card-header">
+              <div class="timeline-card-header-left">
+                <div class="timeline-icon" style="background: rgba(124,58,237,0.08);">🎓</div>
                 <div>
-                  <div class="font-mono text-xs text-violet-soft mb-1">2025 – Sekarang</div>
-                  <h3 class="font-display font-700 text-lg text-bright">Perguruan Tinggi</h3>
-                  <p class="text-slate-muted text-sm">Universitas Dian Nuswantoro — S1 Fakultas Ilmu Komputer / Teknik Informatika </p>
+                  <div class="timeline-date" style="color: #7C3AED;">2025 – Sekarang</div>
+                  <div class="timeline-title">Perguruan Tinggi</div>
+                  <div class="timeline-subtitle">Universitas Dian Nuswantoro — S1 Fakultas Ilmu Komputer / Teknik Informatika</div>
                 </div>
               </div>
-              <div class="rounded-lg px-3 py-1 text-xs font-mono font-semibold" style="background: rgba(124,58,237,0.15); color: #A78BFA; border: 1px solid rgba(124,58,237,0.3);">
-                Aktif
-              </div>
+              <span class="badge badge-accent">Aktif</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <div class="section-sep"></div>
 
-  <section id="organisasi" class="py-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Riwayat <span class="gradient-text">Organisasi</span>
-        </h2>
-        <p class="text-slate-muted mt-4 max-w-lg mx-auto">Pengalaman berorganisasi yang mengasah kepemimpinan dan kolaborasi saya.</p>
+  <!-- ═══ ORGANISASI SECTION ═══ -->
+  <section id="organisasi" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Riwayat <span class="accent">Organisasi</span></h2>
+        <p>Pengalaman berorganisasi yang mengasah kepemimpinan dan kolaborasi saya.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid-3">
+        <!-- DOSCOM -->
+        <div class="card org-card reveal" style="transition-delay: 0s">
+          <div class="org-card-header">
+            <div class="org-icon">🌐</div>
+            <div>
+              <div class="org-date">2025 – Sekarang</div>
+              <div class="org-name">Dinus Open-source Community (DOSCOM)</div>
+              <div class="org-role">Divisi Data Science</div>
+            </div>
+          </div>
+          <p class="org-desc">Aktif dalam pengembangan berbasis data, berkolaborasi dalam proyek data science, serta berkontribusi pada inisiatif komunitas untuk memperdalam pemahaman mengenai pengolahan dan analisis data.</p>
+          <div class="org-tags">
+            <span class="tech-tag">Data Science</span>
+            <span class="tech-tag">Python</span>
+          </div>
+        </div>
 
-        <div class="org-card glass rounded-2xl p-6 border border-transparent reveal" style="transition-delay:0.0s">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.15));">
-              🌐
+        <!-- DNCC -->
+        <div class="card org-card reveal" style="transition-delay: 0.1s">
+          <div class="org-card-header">
+            <div class="org-icon">📊</div>
+            <div>
+              <div class="org-date">2025 – Sekarang</div>
+              <div class="org-name">Dian Nuswantoro Computer Club (DNCC)</div>
+              <div class="org-role">Divisi Data Science</div>
+            </div>
+          </div>
+          <p class="org-desc">Berfokus pada analisis dan visualisasi data, mendalami konsep-konsep data science secara praktis, serta turut serta dalam program pengembangan kompetensi teknologi bagi anggota.</p>
+          <div class="org-tags">
+            <span class="tech-tag">Data Analytics</span>
+            <span class="tech-tag">Data Visualization</span>
+          </div>
+        </div>
+
+        <!-- GDGoC -->
+        <div class="card org-card reveal" style="transition-delay: 0.2s">
+          <div class="org-card-header">
+            <div class="org-icon">🚀</div>
+            <div>
+              <div class="org-date">2025 – Sekarang</div>
+              <div class="org-name">Google Developer Groups on Campus (GDGoC) UDINUS</div>
+              <div class="org-role">—</div>
+            </div>
+          </div>
+          <p class="org-desc">Berpartisipasi aktif dalam berbagai kegiatan komunitas untuk memperluas jejaring profesional, mengikuti workshop teknologi, serta meningkatkan pemahaman mengenai ekosistem pengembangan perangkat lunak.</p>
+          <div class="org-tags">
+            <span class="tech-tag">Networking</span>
+            <span class="tech-tag">Tech Community</span>
+            <span class="tech-tag">Software Development</span>
+          </div>
+        </div>
+
+        <!-- Basket -->
+        <div class="card org-card reveal" style="transition-delay: 0.3s">
+          <div class="org-card-header">
+            <div class="org-icon">🏀</div>
+            <div>
+              <div class="org-date">2025 – Sekarang</div>
+              <div class="org-name">UKM Bola Basket</div>
+              <div class="org-role">—</div>
+            </div>
+          </div>
+          <p class="org-desc">Mengembangkan disiplin diri, kerja sama tim, dan ketahanan fisik melalui partisipasi rutin dalam latihan dan kompetisi basket. Kegiatan ini melatih kemampuan kepemimpinan serta manajemen waktu.</p>
+          <div class="org-tags">
+            <span class="tech-tag">Teamwork</span>
+            <span class="tech-tag">Leadership</span>
+            <span class="tech-tag">Sportsmanship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ═══ PENGALAMAN (EXPERIENCE) SECTION ═══ -->
+  <section id="pengalaman" class="section section-alt">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Pengalaman <span class="accent">Kerja</span></h2>
+        <p>Perjalanan profesional dan internship yang telah saya jalani.</p>
+      </div>
+
+      <div class="card exp-card reveal">
+        <div class="exp-header">
+          <div class="exp-header-left">
+            <div class="exp-icon">🏢</div>
+            <div>
+              <div class="exp-company">PT Telkom Akses (Simpang Lima)</div>
+              <div class="exp-role">Technical Support Specialist Intern</div>
+            </div>
+          </div>
+          <div class="exp-meta">
+            <div class="exp-date">Januari 2024 – Mei 2024</div>
+            <div class="exp-location">Semarang</div>
+          </div>
+        </div>
+        <ul class="exp-list">
+          <li>Mendukung operasional infrastruktur IT pada proyek digitalisasi SPBU untuk memastikan stabilitas sistem.</li>
+          <li>Melakukan pemeliharaan dan dukungan teknis jaringan guna menjaga efisiensi operasional.</li>
+          <li>Mengaplikasikan keahlian Network Engineering dan telekomunikasi dalam lingkungan transformasi digital.</li>
+          <li>Mengasah kemampuan troubleshooting teknis dan kolaborasi tim dalam lingkungan korporasi.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tech-tag">Network Engineering</span>
+          <span class="tech-tag">Troubleshooting</span>
+          <span class="tech-tag">IT Infrastructure</span>
+          <span class="tech-tag">Digital Transformation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-sep"></div>
+
+  <!-- ═══ SKILL SECTION ═══ -->
+  <section id="skill" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Skill & <span class="accent">Keahlian</span></h2>
+        <p>Teknologi dan bidang yang saya kuasai dan terus saya kembangkan.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Data Science & ML -->
+        <div class="card skill-card reveal-left">
+          <div class="skill-card-header">
+            <div class="skill-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="skill-card-title">Data Science & Machine Learning</div>
+          </div>
+          <div class="skill-items">
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Python for Data Science</span>
+                <span class="skill-item-value">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
             </div>
             <div>
-              <div class="font-mono text-xs text-cyan-electric mb-1">2025 – Sekarang</div>
-              <h3 class="font-display font-700 text-base text-bright">Dinus Open-source Community (DOSCOM)</h3>
-              <p class="text-xs text-violet-soft font-medium mt-0.5">Divisi Data Science</p>
-            </div>
-          </div>
-          <p class="text-sm text-slate-muted leading-relaxed">Aktif dalam pengembangan berbasis data, berkolaborasi dalam proyek data science, serta berkontribusi pada inisiatif komunitas untuk memperdalam pemahaman mengenai pengolahan dan analisis data.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Data Science</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Python</span>
-          </div>
-        </div>
-
-        <div class="org-card glass rounded-2xl p-6 border border-transparent reveal" style="transition-delay:0.15s">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.15));">
-              📊
+              <div class="skill-item-header">
+                <span class="skill-item-name">Scikit-learn & TensorFlow</span>
+                <span class="skill-item-value">78%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
             </div>
             <div>
-              <div class="font-mono text-xs text-cyan-electric mb-1">2025 – Sekarang</div>
-              <h3 class="font-display font-700 text-base text-bright">Dian NUswantoro Computer Club (DNCC)</h3>
-              <p class="text-xs text-violet-soft font-medium mt-0.5">Divis Data Science</p>
-            </div>
-          </div>
-          <p class="text-sm text-slate-muted leading-relaxed">saya berfokus pada analisis dan visualisasi data, mendalami konsep-konsep data science secara praktis, serta turut serta dalam program pengembangan kompetensi teknologi bagi anggota</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Data Analytics</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Data Visualization</span>
-          </div>
-        </div>
-
-        <div class="org-card glass rounded-2xl p-6 border border-transparent reveal" style="transition-delay:0.3s">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.15));">
-              🚀
+              <div class="skill-item-header">
+                <span class="skill-item-name">Pandas & NumPy</span>
+                <span class="skill-item-value">82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
             </div>
             <div>
-              <div class="font-mono text-xs text-cyan-electric mb-1">2025 – Sekarang</div>
-              <h3 class="font-display font-700 text-base text-bright">Google Developer Groups on Campus (GDGoC) UDINUS</h3>
-              <p class="text-xs text-violet-soft font-medium mt-0.5">-</p>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Data Science Fundamentals</span>
+                <span class="skill-item-value">75%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
             </div>
           </div>
-          <p class="text-sm text-slate-muted leading-relaxed">Berpartisipasi aktif dalam berbagai kegiatan komunitas untuk memperluas jejaring profesional, mengikuti workshop teknologi, serta meningkatkan pemahaman mengenai ekosistem pengembangan perangkat lunak dan teknologi terkini</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Networking</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Tech Community</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Software Development</span>
-          </div>
         </div>
-        <div class="org-card glass rounded-2xl p-6 border border-transparent reveal" style="transition-delay:0.0s">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(124,58,237,0.15));">
-              🏀
+
+        <!-- Computer Networking -->
+        <div class="card skill-card reveal-right">
+          <div class="skill-card-header">
+            <div class="skill-icon purple">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="skill-card-title">Computer Networking</div>
+          </div>
+          <div class="skill-items">
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Network Engineering & Configuration</span>
+                <span class="skill-item-value" style="color: #7C3AED;">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill purple" data-width="80"></div></div>
             </div>
             <div>
-              <div class="font-mono text-xs text-cyan-electric mb-1">2025 – Sekarang</div>
-              <h3 class="font-display font-700 text-base text-bright">UKM Bola Basket</h3>
-              <p class="text-xs text-violet-soft font-medium mt-0.5">-</p>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Mikrotik & Routing</span>
+                <span class="skill-item-value" style="color: #7C3AED;">80%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill purple" data-width="85"></div></div>
             </div>
-          </div>
-          <p class="text-sm text-slate-muted leading-relaxed">Mengembangkan disiplin diri, kerja sama tim, dan ketahanan fisik melalui partisipasi rutin dalam latihan dan kompetisi basket. Kegiatan ini melatih kemampuan kepemimpinan serta manajemen waktu di luar lingkungan akademis.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Teamwork</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Leadership</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Sportsmanship</span>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Network Security & Firewall</span>
+                <span class="skill-item-value" style="color: #7C3AED;">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill purple" data-width="70"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">IT Infrastructure Management</span>
+                <span class="skill-item-value" style="color: #7C3AED;">85%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill purple" data-width="72"></div></div>
+            </div>
           </div>
         </div>
 
+        <!-- Python Programming -->
+        <div class="card skill-card reveal-left" style="transition-delay: 0.1s">
+          <div class="skill-card-header">
+            <div class="skill-icon yellow">
+              <i class="fab fa-python"></i>
+            </div>
+            <div class="skill-card-title">Python Programming</div>
+          </div>
+          <div class="skill-items">
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Python Core</span>
+                <span class="skill-item-value" style="color: #d97706;">88%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill yellow" data-width="88"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Automation & Scripting</span>
+                <span class="skill-item-value" style="color: #d97706;">82%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill yellow" data-width="82"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Web Development (HTML/CSS/JS/PHP)</span>
+                <span class="skill-item-value" style="color: #d97706;">70%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill yellow" data-width="68"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Visualization -->
+        <div class="card skill-card reveal-right" style="transition-delay: 0.1s">
+          <div class="skill-card-header">
+            <div class="skill-icon green">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <div class="skill-card-title">Data Visualization & Analysis</div>
+          </div>
+          <div class="skill-items">
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Data Analytics & Visualization</span>
+                <span class="skill-item-value" style="color: #22c55e;">83%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="83"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">SQL</span>
+                <span class="skill-item-value" style="color: #22c55e;">76%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="76"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Database Analysis</span>
+                <span class="skill-item-value" style="color: #22c55e;">79%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="79"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header">
+                <span class="skill-item-name">Data-Driven Decision Making</span>
+                <span class="skill-item-value" style="color: #22c55e;">74%</span>
+              </div>
+              <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="74"></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="section-sep"></div>
 
-  <section id="pengalaman" class="py-24 px-4 sm:px-6 lg:px-8" style="background: rgba(255,255,255,0.02);">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-16 reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Pengalaman <span class="gradient-text">Kerja</span>
-        </h2>
-        <p class="text-slate-muted mt-4 max-w-lg mx-auto">Perjalanan profesional dan internship yang telah saya jalani.</p>
+  <!-- ═══ PROYEK (PROJECTS) SECTION ═══ -->
+  <section id="proyek" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Proyek <span class="accent">Pilihan</span></h2>
+        <p>Karya nyata yang telah saya bangun dengan dedikasi penuh.</p>
       </div>
 
-      <div class="space-y-8">
+      <div class="filter-buttons reveal">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="website">Web Development</button>
+        <button class="filter-btn" data-filter="AI">AI/Machine Learning</button>
+      </div>
 
-        <div class="glass rounded-2xl p-6 lg:p-8 reveal" style="transition-delay:0.0s">
-          <div class="flex flex-wrap gap-4 items-start justify-between mb-4">
-            <div class="flex items-center gap-4">
-              <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-                🏢
-              </div>
-              <div>
-                <h3 class="font-display font-700 text-lg text-bright">PT Telkom Akses (Simpang Lima)</h3>
-                <p class="text-cyan-electric text-sm font-medium">Technical Support Specialist Intern</p>
-              </div>
-            </div>
-            <div class="text-right">
-              <div class="font-mono text-xs text-slate-muted">Januari 2024 – Mei 2024</div>
-              <div class="text-xs text-slate-muted mt-0.5">Semarang</div>
-            </div>
+      <div id="project-grid" class="grid-3">
+        <!-- JKT48 Web -->
+        <div class="card project-card reveal" data-category="website" style="transition-delay: 0s">
+          <div class="project-thumbnail">
+            <img src="assets/img/JKT48.png" alt="JKT48 Web">
+            <span class="project-category-badge badge badge-primary">Web Dev</span>
           </div>
-          <ul class="space-y-2 text-sm text-slate-light">
-            <li class="flex items-start gap-2">
-              <span class="text-cyan-electric mt-1 flex-shrink-0">▹</span>
-              <span>Mendukung operasional infrastruktur IT pada proyek digitalisasi SPBU untuk memastikan stabilitas sistem.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-cyan-electric mt-1 flex-shrink-0">▹</span>
-              <span>Melakukan pemeliharaan dan dukungan teknis jaringan guna menjaga efisiensi operasional.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-cyan-electric mt-1 flex-shrink-0">▹</span>
-              <span>Mengaplikasikan keahlian Network Engineering dan telekomunikasi dalam lingkungan transformasi digital.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-cyan-electric mt-1 flex-shrink-0">▹</span>
-              <span>Mengasah kemampuan troubleshooting teknis dan kolaborasi tim dalam lingkungan korporasi.</span>
-            </li>
-          </ul>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Network Engineering</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Troubleshooting</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">IT Infrastructure</span>
-            <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Digital Transformation</span>
+          <div class="project-body">
+            <div class="project-title">RESPONSIVE WEB DESIGN JKT48</div>
+            <p class="project-desc">Proyek pengembangan web mobile-first dengan tema JKT48 untuk mempelajari fundamental antarmuka pengguna.</p>
+            <div class="project-tags">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">Tailwind</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nicholasonearth/mobile-apps-sederhana-jkt48" class="project-link-btn" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
           </div>
         </div>
 
+        <!-- LifeHub -->
+        <div class="card project-card reveal" data-category="website" style="transition-delay: 0.1s">
+          <div class="project-thumbnail">
+            <img src="assets/img/LifeHub.png" alt="LifeHub">
+            <span class="project-category-badge badge badge-primary">Fullstack</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">LIFEHUB</div>
+            <p class="project-desc">Aplikasi fullstack untuk manajemen tugas, jurnal, dan analisis produktivitas dengan sistem gamifikasi RPG (Level & XP).</p>
+            <div class="project-tags">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Laravel</span>
+              <span class="tech-tag">Tailwind</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nicholasonearth/Life_Hub-Fe" class="project-link-btn" target="_blank">
+                <i class="fab fa-github"></i> Frontend
+              </a>
+              <a href="https://github.com/nicholasonearth/Life_Hub-Web_App" class="project-link-btn" target="_blank">
+                <i class="fab fa-github"></i> Backend
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stunting AI -->
+        <div class="card project-card reveal" data-category="AI" style="transition-delay: 0.2s">
+          <div class="project-thumbnail">
+            <img src="assets/img/MachineLearning.png" alt="Stunting AI">
+            <span class="project-category-badge badge badge-primary">Machine Learning</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">STUNTING RISK PREDICTION AI</div>
+            <p class="project-desc">Model ML menggunakan Random Forest & XGBoost untuk memprediksi risiko stunting dengan akurasi 78.41%.</p>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Google Collab</span>
+            </div>
+            <div class="project-links">
+              <a href="assets/docs/DataAnak.ipynb" class="project-link-btn">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holographic Controller -->
+        <div class="card project-card reveal" data-category="AI" style="transition-delay: 0.3s">
+          <div class="project-thumbnail">
+            <img src="assets/img/NecroDungeon.png" alt="Holographic AI Controller">
+            <span class="project-category-badge badge badge-primary">Computer Vision</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">HOLOGRAPHIC AI CONTROLLER</div>
+            <p class="project-desc">Sistem kontrol game revolusioner tanpa perangkat fisik. Menggunakan AI Hand Tracking untuk navigasi virtual analog (L-DRIVE) dan presisi bidikan absolut 1:1 (R-DRIVE).</p>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">MediaPipe</span>
+              <span class="tech-tag">Pynput</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/nicholasonearth/Holographic_Controller_Collab_With_DivisionGameDNCC" class="project-link-btn" target="_blank">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="section-sep"></div>
 
-  <section id="skill" class="py-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Skill & <span class="gradient-text">Keahlian</span>
-        </h2>
-        <p class="text-slate-muted mt-4 max-w-lg mx-auto">Teknologi dan bidang yang saya kuasai dan terus saya kembangkan.</p>
+  <!-- ═══ SERTIFIKAT (CERTIFICATES) SECTION ═══ -->
+  <section id="sertifikat" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Sertifikat & <span class="accent">Penghargaan</span></h2>
+        <p>Bukti komitmen saya dalam pengembangan kompetensi secara berkelanjutan.</p>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-8">
-
-        <div class="glass rounded-2xl p-6 reveal-left">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(0,212,255,0.15);">
-              <i class="fas fa-brain text-cyan-electric"></i>
-            </div>
-            <h3 class="font-display font-700 text-lg text-bright">Data Science & Machine Learning</h3>
-          </div>
-          <div class="space-y-4">
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Python for Data Science</span>
-                <span class="font-mono text-cyan-electric skill-val">85%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="85" style="background: linear-gradient(90deg, #00D4FF, #7C3AED);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Scikit-learn & TensorFlow</span>
-                <span class="font-mono text-cyan-electric skill-val">78%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="78" style="background: linear-gradient(90deg, #00D4FF, #7C3AED);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Pandas & NumPy</span>
-                <span class="font-mono text-cyan-electric skill-val">82%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="82" style="background: linear-gradient(90deg, #00D4FF, #7C3AED);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Data Science Fundamentals</span>
-                <span class="font-mono text-cyan-electric skill-val">75%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="75" style="background: linear-gradient(90deg, #00D4FF, #7C3AED);"></div>
-              </div>
-            </div>
-          </div>
+      <div class="grid-4">
+        <!-- Dicoding: Data Science -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">📈</div>
+          <div class="cert-issuer">Dicoding</div>
+          <div class="cert-name">Belajar Dasar Data Science</div>
+          <div class="cert-year">2026</div>
+          <a href="https://www.dicoding.com/certificates/81P2OQNMNZOY" target="_blank" class="cert-link">Lihat Sertifikat →</a>
         </div>
 
-        <div class="glass rounded-2xl p-6 reveal-right">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(124,58,237,0.15);">
-              <i class="fas fa-network-wired text-violet-soft"></i>
-            </div>
-            <h3 class="font-display font-700 text-lg text-bright">Computer Networking</h3>
-          </div>
-          <div class="space-y-4">
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Network Engineering & Configuration</span>
-                <span class="font-mono text-violet-soft skill-val">85%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="80" style="background: linear-gradient(90deg, #7C3AED, #A78BFA);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Mikrotik & Routing</span>
-                <span class="font-mono text-violet-soft skill-val">80%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="85" style="background: linear-gradient(90deg, #7C3AED, #A78BFA);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Network Security & Firewall</span>
-                <span class="font-mono text-violet-soft skill-val">85%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="70" style="background: linear-gradient(90deg, #7C3AED, #A78BFA);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">IT Infrastructure Management</span>
-                <span class="font-mono text-violet-soft skill-val">85%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="72" style="background: linear-gradient(90deg, #7C3AED, #A78BFA);"></div>
-              </div>
-            </div>
-          </div>
+        <!-- Dicoding: Web -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🌐</div>
+          <div class="cert-issuer">Dicoding</div>
+          <div class="cert-name">Belajar Dasar Pemrograman Web</div>
+          <div class="cert-year">2026</div>
+          <a href="https://www.dicoding.com/certificates/6RPN729Y4X2M" target="_blank" class="cert-link">Lihat Sertifikat →</a>
         </div>
 
-        <div class="glass rounded-2xl p-6 reveal-left" style="transition-delay:0.1s">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(234,179,8,0.15);">
-              <i class="fab fa-python text-yellow-400"></i>
-            </div>
-            <h3 class="font-display font-700 text-lg text-bright">Python Programming</h3>
-          </div>
-          <div class="space-y-4">
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Python Core</span>
-                <span class="font-mono text-yellow-400 skill-val">88%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="88" style="background: linear-gradient(90deg, #EAB308, #F97316);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Automation & Scripting</span>
-                <span class="font-mono text-yellow-400 skill-val">82%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="82" style="background: linear-gradient(90deg, #EAB308, #F97316);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Web Development (HTML/CSS/JS/PHP)</span>
-                <span class="font-mono text-yellow-400 skill-val">70%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="68" style="background: linear-gradient(90deg, #EAB308, #F97316);"></div>
-              </div>
-            </div>
-          </div>
+        <!-- Dicoding: JavaScript -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">📜</div>
+          <div class="cert-issuer">Dicoding</div>
+          <div class="cert-name">Belajar Dasar Pemrograman JavaScript</div>
+          <div class="cert-year">2026</div>
+          <a href="https://www.dicoding.com/certificates/QLZ995GN9Z5D" target="_blank" class="cert-link">Lihat Sertifikat →</a>
         </div>
 
-        <div class="glass rounded-2xl p-6 reveal-right" style="transition-delay:0.1s">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(34,197,94,0.15);">
-              <i class="fas fa-chart-pie text-green-400"></i>
-            </div>
-            <h3 class="font-display font-700 text-lg text-bright">Data Visualization & Analysis</h3>
-          </div>
-          <div class="space-y-4">
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Data Analytics & Visualization</span>
-                <span class="font-mono text-green-400 skill-val">83%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="83" style="background: linear-gradient(90deg, #22C55E, #06B6D4);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">SQL</span>
-                <span class="font-mono text-green-400 skill-val">76%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="76" style="background: linear-gradient(90deg, #22C55E, #06B6D4);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Database Analysis</span>
-                <span class="font-mono text-green-400 skill-val">79%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="79" style="background: linear-gradient(90deg, #22C55E, #06B6D4);"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="flex justify-between text-sm mb-2">
-                <span class="text-slate-light">Data-Driven Decision Making</span>
-                <span class="font-mono text-green-400 skill-val">74%</span>
-              </div>
-              <div class="h-2 rounded-full bg-navy-700 overflow-hidden">
-                <div class="skill-bar-fill h-full rounded-full" data-width="74" style="background: linear-gradient(90deg, #22C55E, #06B6D4);"></div>
-              </div>
-            </div>
-          </div>
+        <!-- Dicoding: Microsoft Fabric -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">📊</div>
+          <div class="cert-issuer">Dicoding</div>
+          <div class="cert-name">Belajar Penerapan Data Science dengan Microsoft Fabric</div>
+          <div class="cert-year">2026</div>
+          <a href="https://www.dicoding.com/certificates/JMZVO70EQXN9" target="_blank" class="cert-link">Lihat Sertifikat →</a>
         </div>
 
+        <!-- BTNG DNCC -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-issuer">DNCC</div>
+          <div class="cert-name">Basic Training For Next Generation</div>
+          <div class="cert-year">2025</div>
+          <a href="assets/img/SertifikatBTNG.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- SEMNASTI -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🎤</div>
+          <div class="cert-issuer">Informatics Student Association</div>
+          <div class="cert-name">National Seminar on Informatics Engineering</div>
+          <div class="cert-year">2025</div>
+          <a href="assets/img/SertifikatSemnasti.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- UKK Competency -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🛠️</div>
+          <div class="cert-issuer">Walisongo Vocational High School</div>
+          <div class="cert-name">UKK Competency Certificate</div>
+          <div class="cert-year">2025</div>
+          <a href="assets/img/SertifikatUKK.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- UKK Score -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🔒</div>
+          <div class="cert-issuer">APTII / SMK Walisongo</div>
+          <div class="cert-name">Vocational Competency Test (UKK)</div>
+          <div class="cert-year">2025</div>
+          <a href="assets/img/SertifikatNilaiUKK.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- PKL Telkom -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🏢</div>
+          <div class="cert-issuer">PT Telkom Akses</div>
+          <div class="cert-name">Praktik Kerja Lapangan (PKL)</div>
+          <div class="cert-year">2024</div>
+          <a href="assets/img/SertifikatPKLTelkom.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- Windows & Office -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">💻</div>
+          <div class="cert-issuer">Sabar Parade Wedya</div>
+          <div class="cert-name">Windows & Microsoft Office Package</div>
+          <div class="cert-year">2019</div>
+          <a href="assets/img/SertifikatPaketWindows.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- English Course -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🗣️</div>
+          <div class="cert-issuer">Sabar Parade Wedya</div>
+          <div class="cert-name">General English - Basic</div>
+          <div class="cert-year">2019</div>
+          <a href="assets/img/SertifikatPaketEnglish.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
+
+        <!-- Release Party 2026 -->
+        <div class="card cert-card reveal">
+          <div class="cert-icon">🚀</div>
+          <div class="cert-issuer">DOSCOM</div>
+          <div class="cert-name">Release Party 2026</div>
+          <div class="cert-year">2026</div>
+          <a href="assets/img/SertifikatRP2026Peserta.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="section-sep"></div>
 
-  <section id="proyek" class="py-24 px-4 sm:px-6 lg:px-8" style="background: rgba(255,255,255,0.02);">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12 reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Proyek <span class="gradient-text">Pilihan</span>
-        </h2>
-        <p class="text-slate-muted mt-4 max-w-lg mx-auto">Karya nyata yang telah saya bangun dengan dedikasi penuh.</p>
+  <!-- ═══ KONTAK (CONTACT) SECTION ═══ -->
+  <section id="kontak" class="section section-alt">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-header reveal">
+        <div class="section-accent"></div>
+        <h2>Mari <span class="accent">Terhubung</span></h2>
+        <p>Saya terbuka untuk diskusi, peluang magang, kolaborasi proyek, atau sekadar berbagi ide seputar teknologi dan data. Jangan ragu untuk menghubungi saya!</p>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-3 mb-10 reveal">
-        <button class="filter-btn active px-5 py-2 rounded-full text-sm font-medium glass transition-all" data-filter="all">Semua</button>
-        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium glass text-slate-light transition-all" data-filter="website">Web Development</button>
-        <button class="filter-btn px-5 py-2 rounded-full text-sm font-medium glass text-slate-light transition-all" data-filter="AI">AI/Machine Learning</button>
-      </div>
-
-      <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <div class="project-card card-tilt glass rounded-2xl overflow-hidden reveal border border-transparent hover:border-cyan-electric" data-category="website" style="transition-delay:0.0s">
-  <div class="h-44 flex items-center justify-center relative overflow-hidden" style="background: linear-gradient(135deg, #0F1628, #161E38);">
-    <img src="assets/img/JKT48.png" alt="JKT48 Web" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80">
-    <div class="absolute top-3 right-3 glass-cyan rounded-lg px-2 py-0.5 text-xs font-mono text-cyan-electric z-10">Web Dev</div>
-  </div>
-  <div class="p-6">
-    <h3 class="font-display font-700 text-base text-bright mb-2">RESPONSIVE WEB DESIGN JKT48</h3>
-    <p class="text-sm text-slate-muted leading-relaxed mb-4">Proyek pengembangan web mobile-first dengan tema JKT48 untuk mempelajari fundamental antarmuka pengguna.</p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">HTML</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Tailwind</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">JavaScript</span>
-    </div>
-    <div class="flex gap-3">
-      <a href="https://github.com/nicholasonearth/mobile-apps-sederhana-jkt48" class="flex-1 text-center py-2 rounded-lg text-xs font-medium text-cyan-electric border border-cyan-electric hover:bg-cyan-electric hover:text-navy-900 transition-all">
-        <i class="fab fa-github mr-1"></i> GitHub
-      </a>
-    </div>
-  </div>
-</div>
-
-        <div class="project-card card-tilt glass rounded-2xl overflow-hidden reveal border border-transparent hover:border-cyan-electric" data-category="website" style="transition-delay:0.1s">
-  <div class="h-44 flex items-center justify-center relative overflow-hidden" style="background: linear-gradient(135deg, #0F1628, #161E38);">
-    <img src="assets/img/LifeHub.png" alt="LifeHub" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80">
-    <div class="absolute top-3 right-3 glass-cyan rounded-lg px-2 py-0.5 text-xs font-mono text-cyan-electric z-10">Fullstack</div>
-  </div>
-  <div class="p-6">
-    <h3 class="font-display font-700 text-base text-bright mb-2">LIFEHUB</h3>
-    <p class="text-sm text-slate-muted leading-relaxed mb-4">Aplikasi fullstack untuk manajemen tugas, jurnal, dan analisis produktivitas dengan sistem gamifikasi RPG (Level & XP).</p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">React</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Laravel</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Tailwind</span>
-    </div>
-    <div class="flex gap-3">
-      <a href="https://github.com/nicholasonearth/Life_Hub-Fe" class="flex-1 text-center py-2 rounded-lg text-xs font-medium text-cyan-electric border border-cyan-electric hover:bg-cyan-electric hover:text-navy-900 transition-all">
-        <i class="fab fa-github mr-1"></i> Frontend
-      </a>
-      <a href="https://github.com/nicholasonearth/Life_Hub-Web_App" class="flex-1 text-center py-2 rounded-lg text-xs font-medium text-cyan-electric border border-cyan-electric hover:bg-cyan-electric hover:text-navy-900 transition-all">
-        <i class="fab fa-github mr-1"></i> Backend
-      </a>
-    </div>
-  </div>
-</div>
-
-        <div class="project-card card-tilt glass rounded-2xl overflow-hidden reveal border border-transparent hover:border-cyan-electric" data-category="AI" style="transition-delay:0.2s">
-  <div class="h-44 flex items-center justify-center relative overflow-hidden" style="background: linear-gradient(135deg, #0F1628, #161E38);">
-    <img src="assets/img/MachineLearning.png" alt="AI Stunting" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80">
-    <div class="absolute top-3 right-3 glass-cyan rounded-lg px-2 py-0.5 text-xs font-mono text-cyan-electric z-10">Machine Learning</div>
-  </div>
-  <div class="p-6">
-    <h3 class="font-display font-700 text-base text-bright mb-2">STUNTING RISK PREDICTION AI</h3>
-    <p class="text-sm text-slate-muted leading-relaxed mb-4">Model ML menggunakan Random Forest & XGBoost untuk memprediksi risiko stunting dengan akurasi 78.41%.</p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Python</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Google Collab</span>
-    </div>
-    <div class="flex gap-3">
-      <a href="assets/docs/DataAnak.ipynb" class="flex-1 text-center py-2 rounded-lg text-xs font-medium text-cyan-electric border border-cyan-electric hover:bg-cyan-electric hover:text-navy-900 transition-all">
-        <i class="fab fa-github mr-1"></i> GitHub
-      </a>
-    </div>
-  </div>
-</div>
-
-        <div class="project-card card-tilt glass rounded-2xl overflow-hidden reveal border border-transparent hover:border-cyan-electric" data-category="AI" style="transition-delay:0.2s">
-  <div class="h-44 flex items-center justify-center relative overflow-hidden" style="background: linear-gradient(135deg, #0F1628, #161E38);">
-    <img src="assets/img/NecroDungeon.png" alt="Holographic AI Controller" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80">
-    <div class="absolute top-3 right-3 glass-cyan rounded-lg px-2 py-0.5 text-xs font-mono text-cyan-electric z-10">Computer Vision</div>
-  </div>
-  <div class="p-6">
-    <h3 class="font-display font-700 text-base text-bright mb-2">HOLOGRAPHIC AI CONTROLLER</h3>
-    <p class="text-sm text-slate-muted leading-relaxed mb-4">Sistem kontrol game revolusioner tanpa perangkat fisik. Menggunakan AI Hand Tracking untuk navigasi virtual analog (L-DRIVE) dan presisi bidikan absolut 1:1 (R-DRIVE).</p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">Python</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">OpenCV</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-cyan-electric">MediaPipe</span>
-      <span class="glass-cyan px-2 py-0.5 rounded text-xs text-violet-soft">Pynput</span>
-    </div>
-    <div class="flex gap-3">
-      <a href="https://github.com/nicholasonearth/Holographic_Controller_Collab_With_DivisionGameDNCC" class="flex-1 text-center py-2 rounded-lg text-xs font-medium text-cyan-electric border border-cyan-electric hover:bg-cyan-electric hover:text-navy-900 transition-all">
-        <i class="fab fa-github mr-1"></i> GitHub
-      </a>
-    </div>
-  </div>
-</div>
-
-        
-
-      </div>
-    </div>
-  </section>
-
-  <div class="section-sep"></div>
-
-  <section id="sertifikat" class="py-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Sertifikat & <span class="gradient-text">Penghargaan</span>
-        </h2>
-        <p class="text-slate-muted mt-4 max-w-lg mx-auto">Bukti komitmen saya dalam pengembangan kompetensi secara berkelanjutan.</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-    📈
-  </div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Dicoding</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Belajar Dasar Data Science</h4>
-  <p class="text-xs text-slate-muted mb-2">2026</p>
-  <a href="https://www.dicoding.com/certificates/81P2OQNMNZOY" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-        <div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-    🌐
-  </div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Dicoding</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Belajar Dasar Pemrograman Web</h4>
-  <p class="text-xs text-slate-muted">2026</p>
-  <a href="https://www.dicoding.com/certificates/6RPN729Y4X2M" class="mt-4 inline-block text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-        <div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-    📜
-  </div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Dicoding</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Belajar Dasar Pemrograman JavaScript</h4>
-  <p class="text-xs text-slate-muted">2026</p>
-  <a href="https://www.dicoding.com/certificates/QLZ995GN9Z5D" class="mt-4 inline-block text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-        <div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-    📊
-  </div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Dicoding</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Belajar Penerapan Data Science dengan Microsoft Fabric</h4>
-  <p class="text-xs text-slate-muted">2026</p>
-  <a href="https://www.dicoding.com/certificates/JMZVO70EQXN9" class="mt-4 inline-block text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-       <!-- Certificate: BTNG DNCC 2025 -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">🎓</div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">DNCC</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Basic Training For Next Generation</h4>
-  <p class="text-xs text-slate-muted mb-2">2025</p>
-  <a href="assets/img/SertifikatBTNG.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: SEMNASTI 2025 -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">🎤</div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Informatics Student Association</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">National Seminar on Informatics Engineering</h4>
-  <p class="text-xs text-slate-muted mb-2">2025</p>
-  <a href="assets/img/SertifikatSemnasti.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: UKK Competency -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">🛠️</div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Walisongo Vocational High School</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">UKK Competency Certificate</h4>
-  <p class="text-xs text-slate-muted mb-2">2025</p>
-  <a href="assets/img/SertifikatUKK.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: Vocational Competency Test Score (UKK) -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-    🔒
-  </div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">APTII / SMK Walisongo</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Vocational Competency Test (UKK)</h4>
-  <p class="text-xs text-slate-muted mb-2">2025</p>
-  <a href="assets/img/SertifikatNilaiUKK.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: PKL PT Telkom Akses -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">🏢</div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">PT Telkom Akses</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Praktik Kerja Lapangan (PKL)</h4>
-  <p class="text-xs text-slate-muted mb-2">2024</p>
-  <a href="assets/img/SertifikatPKLTelkom.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: Windows & Microsoft Office -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">💻</div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Sabar Parade Wedya</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Windows & Microsoft Office Package</h4>
-  <p class="text-xs text-slate-muted mb-2">2019</p>
-  <a href="assets/img/SertifikatPaketWindows.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: English Course -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">🗣️</div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">Sabar Parade Wedya</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">General English - Basic</h4>
-  <p class="text-xs text-slate-muted mb-2">2019</p>
-  <a href="assets/img/SertifikatPaketEnglish.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-<!-- Certificate: Release Party 2026 -->
-<div class="cert-card glass rounded-2xl p-5 text-center reveal border border-transparent hover:border-cyan-electric" style="transition-delay:0.0s">
-  <div class="w-14 h-14 mx-auto rounded-xl flex items-center justify-center text-2xl mb-4" style="background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));">
-    🚀
-  </div>
-  <div class="font-mono text-xs text-cyan-electric mb-1">DOSCOM</div>
-  <h4 class="font-display font-700 text-sm text-bright mb-2">Release Party 2026</h4>
-  <p class="text-xs text-slate-muted mb-2">2026</p>
-  <a href="assets/img/SertifikatRP2026Peserta.png" target="_blank" class="text-xs text-cyan-electric hover:underline font-mono">Lihat Sertifikat →</a>
-</div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="section-sep"></div>
-
-  <section id="kontak" class="py-24 px-4 sm:px-6 lg:px-8" style="background: rgba(255,255,255,0.02);">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="reveal">
-        <div class="flex justify-center"><div class="section-accent"></div></div>
-        <h2 class="font-display font-800 text-4xl sm:text-5xl mt-2">
-          Mari <span class="gradient-text">Terhubung</span>
-        </h2>
-        <p class="text-slate-muted max-w-xl mx-auto leading-relaxed mb-12">
-          Saya terbuka untuk diskusi, peluang magang, kolaborasi proyek, atau sekadar berbagi ide seputar teknologi dan data. Jangan ragu untuk menghubungi saya!
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-        <a href="https://wa.me/6289609100808" target="_blank" class="glass rounded-2xl p-5 flex flex-col items-center gap-3 hover:border-green-400 border border-transparent transition-all group reveal" style="transition-delay:0.0s">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(34,197,94,0.15);">
-            <i class="fab fa-whatsapp text-green-400 text-xl"></i>
+      <div class="contact-grid reveal">
+        <a href="https://wa.me/6289609100808" target="_blank" class="card contact-card">
+          <div class="contact-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
           </div>
           <div>
-            <div class="text-xs text-slate-muted mb-0.5">WhatsApp</div>
-            <div class="text-sm font-medium text-bright group-hover:text-green-400 transition-colors"></div>
+            <div class="contact-card-label">WhatsApp</div>
           </div>
         </a>
-        <button onclick="copyToClipboard('nicholasdevin9@gmail.com', 'Email disalin!')" class="glass rounded-2xl p-5 flex flex-col items-center gap-3 hover:border-cyan-electric border border-transparent transition-all group reveal text-left" style="transition-delay:0.1s">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(0,212,255,0.12);">
-            <i class="fas fa-envelope text-cyan-electric text-lg"></i>
+
+        <button onclick="copyToClipboard('nicholasdevin9@gmail.com', 'Email disalin!')" class="card contact-card" style="text-align: left; width: 100%;">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
           </div>
           <div>
-            <div class="text-xs text-slate-muted mb-0.5">Email</div>
-            <div class="text-sm font-medium text-bright group-hover:text-cyan-electric transition-colors"></div>
+            <div class="contact-card-label">Email</div>
           </div>
         </button>
-        <a href="https://github.com/nicholasonearth" target="_blank" class="glass rounded-2xl p-5 flex flex-col items-center gap-3 hover:border-slate-light border border-transparent transition-all group reveal" style="transition-delay:0.2s">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(184,194,208,0.12);">
-            <i class="fab fa-github text-slate-light text-xl"></i>
+
+        <a href="https://github.com/nicholasonearth" target="_blank" class="card contact-card">
+          <div class="contact-icon github">
+            <i class="fab fa-github"></i>
           </div>
           <div>
-            <div class="text-xs text-slate-muted mb-0.5">GitHub</div>
-            <div class="text-sm font-medium text-bright group-hover:text-slate-light transition-colors"></div>
+            <div class="contact-card-label">GitHub</div>
           </div>
         </a>
-        <a href="https://www.linkedin.com/in/nicholas-devin-daniardi-806979344/" target="_blank" class="glass rounded-2xl p-5 flex flex-col items-center gap-3 hover:border-blue-400 border border-transparent transition-all group reveal" style="transition-delay:0.3s">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background: rgba(59,130,246,0.12);">
-            <i class="fab fa-linkedin-in text-blue-400 text-xl"></i>
+
+        <a href="https://www.linkedin.com/in/nicholas-devin-daniardi-806979344/" target="_blank" class="card contact-card">
+          <div class="contact-icon linkedin">
+            <i class="fab fa-linkedin-in"></i>
           </div>
           <div>
-            <div class="text-xs text-slate-muted mb-0.5">LinkedIn</div>
-            <div class="text-sm font-medium text-bright group-hover:text-blue-400 transition-colors"></div>
+            <div class="contact-card-label">LinkedIn</div>
           </div>
         </a>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
-        <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-sm font-semibold text-navy-900 transition-all hover:scale-105" style="background: linear-gradient(135deg, #00D4FF, #7C3AED);">
-          <i class="fas fa-download text-base"></i>
+      <div class="contact-actions reveal">
+        <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn-primary">
+          <i class="fas fa-download"></i>
           <span>Download CV Lengkap</span>
         </a>
-        <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-sm font-semibold border border-green-500 text-green-400 hover:bg-green-500 hover:text-white transition-all hover:scale-105">
-          <i class="fab fa-whatsapp text-base"></i>
+        <a href="https://wa.me/6289609100808" target="_blank" class="btn-secondary">
+          <i class="fab fa-whatsapp"></i>
           <span>Chat via WhatsApp</span>
         </a>
       </div>
     </div>
   </section>
 
-  <footer class="py-8 px-4 border-t" style="border-color: rgba(255,255,255,0.06);">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="font-display font-700 text-base gradient-text"></div>
-      
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Nicholasonearth</div>
+      </div>
     </div>
   </footer>
 
-  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-8 right-6 w-11 h-11 rounded-full flex items-center justify-center z-40 transition-all hover:scale-110" style="background: linear-gradient(135deg, #00D4FF, #7C3AED); box-shadow: 0 4px 20px rgba(0,212,255,0.3);">
-    <i class="fas fa-arrow-up text-white text-sm"></i>
+  <!-- Back to Top -->
+  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-arrow-up"></i>
   </button>
 
   <script src="assets/js/script.js"></script>
