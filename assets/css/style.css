@@ -5,14 +5,15 @@
 
 /* ─── 1. DESIGN TOKENS ─── */
 :root {
-  --bg: #FAFAFA;
-  --bg-card: #FFFFFF;
-  --text-primary: #111111;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
-  --border: #E8E8E8;
-  --accent: #2563EB;
-  --accent-hover: #1D4ED8;
+  /* Palette: Warm Sand (Bg) + Charcoal (Text) + Terracotta (Accent) */
+  --bg: #F4F1EA;
+  --bg-card: #FCFAF5;
+  --text-primary: #1C1E21;
+  --text-secondary: #5A5D63;
+  --text-tertiary: #94979C;
+  --border: #E2DFD8;
+  --accent: #C44536;
+  --accent-hover: #A6382A;
 
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'IBM Plex Sans', sans-serif;
