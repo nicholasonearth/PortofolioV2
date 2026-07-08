@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
@@ -9,15 +9,17 @@
     content="Portfolio Nicholas Devin Daniardi — Mahasiswa Teknik Informatika yang berfokus pada Data Science, Machine Learning, dan Computer Networking." />
   <meta name="author" content="Nicholas Devin Daniardi" />
 
-  <!-- Fonts: Space Grotesk + IBM Plex Sans -->
+  <!-- Fonts: Bricolage Grotesque + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -25,291 +27,224 @@
 
 <body>
 
-  <!-- Scroll Progress Bar -->
-  <div id="progress-bar" style="width:0%"></div>
-
   <!-- Toast Notification -->
   <div class="toast" id="toast">
-    <div class="toast-inner">
-      <i class="fas fa-check-circle"></i>
-      <span id="toast-msg"></span>
-    </div>
+    <span id="toast-msg"></span>
   </div>
 
   <!-- ═══ NAVIGATION ═══ -->
-  <nav id="navbar" class="navbar">
-    <div class="navbar-inner">
-      <a href="#hero" class="navbar-logo">Nicholas Devin</a>
+  <nav id="navbar" class="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo magnetic">NICHOLAS DEVIN</a>
 
-      <div class="navbar-links" id="desktop-nav">
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#certifications" class="nav-link">Certificates</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <div class="nav-links" id="desktop-nav">
+        <a href="#work" class="nav-link magnetic">Work</a>
+        <a href="#experience" class="nav-link magnetic">Experience</a>
+        <a href="#skills" class="nav-link magnetic">Skills</a>
+        <a href="#certifications" class="nav-link magnetic">Certificates</a>
+        <a href="#contact" class="nav-link magnetic">Contact</a>
       </div>
 
-      <div class="navbar-actions">
-        <button id="ham-btn" class="ham-btn">
-          <span class="ham-line"></span>
-          <span class="ham-line"></span>
-          <span class="ham-line"></span>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <button id="theme-btn" class="theme-toggle magnetic" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="mobile-menu-btn" class="menu-toggle" aria-label="Toggle Mobile Menu" style="font-size: 1.5rem; display: none;">
+          <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-      <div class="mobile-menu-inner">
-        <a href="#hero" class="mob-link">Introduction</a>
-        <a href="#work" class="mob-link">Work</a>
-        <a href="#experience" class="mob-link">Experience</a>
-        <a href="#skills" class="mob-link">Skills</a>
-        <a href="#certifications" class="mob-link">Certificates</a>
-        <a href="#contact" class="mob-link">Contact</a>
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="mobile-drawer-inner">
+        <a href="#work" class="mobile-nav-link">Work</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#certifications" class="mobile-nav-link">Certificates</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
       </div>
     </div>
   </nav>
 
-
-  <!-- ═══ 01 / INTRODUCTION ═══ -->
-  <section id="hero" class="hero section">
+  <!-- ═══ 01 / HERO (CHAPTER 1) ═══ -->
+  <section id="hero" class="hero">
+    <div class="hero-visual"></div> <!-- Floating background visual -->
     <div class="container">
-      <span class="section-number reveal">01 / Introduction</span>
+      <div class="hero-content" id="hero-content">
+        <h1 class="text-hero" style="font-size: clamp(3rem, 8vw, 7rem);">
+          AI ENGINEER <br>
+          <span class="text-accent">&amp; DATA SCIENTIST</span>
+        </h1>
+        <p class="font-display" style="font-size: 1.25rem; font-weight: 600; margin-top: var(--space-sm);">NICHOLAS DEVIN DANIARDI — SEMARANG, INDONESIA</p>
+        
+        <p class="text-body-lg" style="max-width: 700px; margin-top: var(--space-md); font-weight: 600;">
+          Machine Learning Enthusiast — Building intelligent systems that solve real-world problems.
+        </p>
+        <p class="text-body-lg" style="max-width: 700px; margin-top: var(--space-xs);">
+          Mahasiswa penuh semangat yang berfokus pada Data Science, Machine Learning, dan Computer Networking. Membangun solusi cerdas dari data yang kompleks.
+        </p>
 
-      <div class="hero-grid-editorial">
-        <div class="hero-main-title reveal">
-          <h1 class="hero-architectural-title">AI ENGINEER<br>&amp; DATA SCIENTIST</h1>
-          <p class="hero-byline">NICHOLAS DEVIN DANIARDI — SEMARANG, INDONESIA</p>
-        </div>
-
-        <div class="hero-editorial-body reveal">
-           <div class="hero-photo-inset">
-             <img src="assets/img/FotoProfil.jpeg" alt="Nicholas Devin Daniardi" class="inset-img" id="profile-photo" />
-           </div>
-           <div class="hero-desc-group">
-             <p class="hero-role-bold">Machine Learning Enthusiast — Building intelligent systems that solve real-world problems.</p>
-             <p class="hero-desc-text">Mahasiswa penuh semangat yang berfokus pada Data Science, Machine Learning, dan Computer Networking. Membangun solusi cerdas dari data yang kompleks.</p>
-             <div class="hero-actions-editorial">
-                <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn-primary">Download CV</a>
-                <a href="https://wa.me/6289609100808" target="_blank" class="btn-secondary">Hubungi Saya</a>
-             </div>
-           </div>
-        </div>
-      </div>
-
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator">
-        <span>scroll</span>
-        <div class="scroll-indicator-track">
-          <div class="scroll-indicator-dot"></div>
+        <div class="hero-actions">
+          <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn btn-primary magnetic">Download CV</a>
+          <a href="https://wa.me/6289609100808" target="_blank" class="btn btn-outline magnetic">Hubungi Saya</a>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider" />
-
-  <!-- About (part of Introduction flow) -->
-  <section class="section" id="about">
+  <!-- ═══ 02 / ABOUT (CHAPTER 2) ═══ -->
+  <section id="about" class="section">
     <div class="container">
-      <div class="about-grid-editorial">
-        <!-- Left: Editorial Quote -->
-        <div class="about-left reveal-left">
-          <p class="about-architectural-quote">
+      <div class="grid-2">
+        <div class="gsap-about-text">
+          <h2 class="text-h2" style="margin-bottom: var(--space-md);">
             "DATA ADALAH ASET STRATEGIS PALING BERHARGA DALAM MENGAKSELERASI INOVASI DI ERA DIGITAL."
+          </h2>
+          <p class="text-body" style="margin-bottom: var(--space-md);">
+            Saya adalah mahasiswa Teknik Informatika yang berfokus pada <strong class="text-accent">Data Science</strong>, <strong class="text-accent">Machine Learning</strong>, dan <strong class="text-accent">Computer Networking</strong>. Berbekal pengalaman magang di <strong>PT Telkom Akses Simpang Lima</strong> dalam proyek digitalisasi serta prestasi akademik sejak SMK, saya terus mengembangkan kemampuan dalam membangun solusi berbasis AI, analisis data, dan sistem otomasi yang memberikan dampak nyata.
           </p>
+          
+          <div class="flex-between" style="margin-top: var(--space-lg); border-top: 1px dashed var(--c-border); padding-top: var(--space-sm);">
+            <div>
+              <p class="font-display" style="font-size: 0.875rem; color: var(--c-text-muted);">LOKASI</p>
+              <p class="font-display" style="font-weight: 600; font-size: 1.125rem;">Indonesia</p>
+            </div>
+            <div>
+              <p class="font-display" style="font-size: 0.875rem; color: var(--c-text-muted);">EMAIL</p>
+              <p class="font-display" style="font-weight: 600; font-size: 1.125rem;">nicholasdevin9@gmail.com</p>
+            </div>
+          </div>
         </div>
-
-        <!-- Right: Description -->
-        <div class="about-right reveal-right">
-          <p class="about-text">
-            Saya adalah mahasiswa Teknik Informatika yang berfokus pada <span class="highlight">Data Science</span>, <span class="highlight">Machine Learning</span>, dan <span class="highlight">Computer Networking</span>. Berbekal pengalaman magang di <span class="highlight-bold">PT Telkom Akses Simpang Lima</span> dalam proyek digitalisasi serta prestasi akademik sejak SMK, saya terus mengembangkan kemampuan dalam membangun solusi berbasis <strong>AI</strong>, analisis data, dan sistem otomasi yang memberikan dampak nyata.
-          </p>
-
-          <!-- Info Row -->
-          <div class="about-info-row-editorial">
-            <div class="about-info-item">
-              <p class="label-editorial">LOKASI</p>
-              <p class="body-md">Indonesia</p>
-            </div>
-            <div class="about-info-item">
-              <p class="label-editorial">EMAIL</p>
-              <p class="body-md">nicholasdevin9@gmail.com</p>
-            </div>
+        <div class="gsap-about-img">
+          <div class="about-image-wrapper">
+            <img src="assets/img/FotoProfil.jpeg" alt="Nicholas Devin Daniardi" />
           </div>
         </div>
       </div>
 
-      <!-- Interests & Tech Stack -->
-      <div class="interests-grid reveal">
-        <div>
-          <h3 class="interest-block-title">Yang Saya Sukai</h3>
-          <div class="interest-list">
-            <div class="interest-list-item">
-              <i class="fas fa-brain"></i>
-              <span>Membangun Solusi AI &amp; ML</span>
-            </div>
-            <div class="interest-list-item">
-              <i class="fas fa-network-wired"></i>
-              <span>Analisis &amp; Visualisasi Data</span>
-            </div>
-            <div class="interest-list-item">
-              <i class="fas fa-chart-bar"></i>
-              <span>Infrastruktur &amp; Jaringan</span>
-            </div>
-            <div class="interest-list-item">
-              <i class="fab fa-python"></i>
-              <span>Otomasi &amp; Efisiensi</span>
-            </div>
-            <div class="interest-list-item">
-              <i class="fas fa-database"></i>
-              <span>Eksplorasi Data</span>
-            </div>
-          </div>
+      <!-- Interests & Tech Stack (Restored) -->
+      <div class="grid-2" style="margin-top: var(--space-xl);">
+        <div class="gsap-about-text">
+          <h3 class="font-display text-h3" style="margin-bottom: var(--space-md);">Yang Saya Sukai</h3>
+          <ul style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <li class="text-body"><i class="fas fa-brain text-accent" style="width: 24px;"></i> Membangun Solusi AI &amp; ML</li>
+            <li class="text-body"><i class="fas fa-network-wired text-accent" style="width: 24px;"></i> Analisis &amp; Visualisasi Data</li>
+            <li class="text-body"><i class="fas fa-chart-bar text-accent" style="width: 24px;"></i> Infrastruktur &amp; Jaringan</li>
+            <li class="text-body"><i class="fab fa-python text-accent" style="width: 24px;"></i> Otomasi &amp; Efisiensi</li>
+            <li class="text-body"><i class="fas fa-database text-accent" style="width: 24px;"></i> Eksplorasi Data</li>
+          </ul>
         </div>
-
-        <div>
-          <h3 class="interest-block-title">Tech Stack</h3>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">TensorFlow</span>
-            <span class="tech-tag">Scikit-learn</span>
-            <span class="tech-tag">Pandas</span>
-            <span class="tech-tag">NumPy</span>
-            <span class="tech-tag">Cisco Packet Tracer</span>
-            <span class="tech-tag">Tableau</span>
-            <span class="tech-tag">Matplotlib</span>
-            <span class="tech-tag">Power BI</span>
-            <span class="tech-tag">SQL</span>
-            <span class="tech-tag">Git</span>
+        <div class="gsap-about-text">
+          <h3 class="font-display text-h3" style="margin-bottom: var(--space-md);">Tech Stack</h3>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Cisco Packet Tracer</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Git</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="section-divider" />
-
-
-  <!-- ═══ 02 / SELECTED WORK ═══ -->
+  <!-- ═══ 03 / WORK (CHAPTER 3) ═══ -->
   <section id="work" class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-number reveal">02 / Selected Work</span>
-        <h2 class="heading-lg reveal">Proyek Pilihan</h2>
-        <p class="body-lg reveal">Karya nyata yang telah saya bangun dengan dedikasi penuh.</p>
+      <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h2 class="text-h2">Proyek Pilihan</h2>
+        <p class="text-body-lg">Karya nyata yang telah saya bangun dengan dedikasi penuh.</p>
       </div>
-      <div class="project-filters reveal">
-        <button class="filter-btn active" data-filter="all">Semua</button>
-        <button class="filter-btn" data-filter="Web Development">Web</button>
-        <button class="filter-btn" data-filter="Fullstack">Fullstack</button>
-        <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
-        <button class="filter-btn" data-filter="Computer Vision">Computer Vision</button>
-      </div>
-
-      <div class="projects-list">
-
-        <!-- Project 1: JKT48 -->
-        <div class="project-item reveal" data-category="Web Development">
-          <div class="project-thumbnail">
-            <img src="assets/img/JKT48.png" alt="JKT48 Web" />
+      
+      <div class="projects-wrapper">
+        
+        <!-- Project 1 -->
+        <div class="project-card gsap-project">
+          <div class="project-info">
+            <span class="font-display text-accent">Web Development</span>
+            <h3 class="text-h3" style="margin-top: var(--space-xs); margin-bottom: var(--space-sm);">Responsive Web Design JKT48</h3>
+            <p class="text-body">Proyek pengembangan web mobile-first dengan tema JKT48 untuk mempelajari fundamental antarmuka pengguna.</p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">Tailwind</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-sm);">
+              <a href="https://jkt48fans.vercel.app/" class="btn btn-primary magnetic" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/nicholasonearth/mobile-apps-sederhana-jkt48" class="btn btn-outline magnetic" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
           </div>
-          <div class="project-body">
-            <p class="project-category">Web Development</p>
-            <h3 class="project-title">Responsive Web Design JKT48</h3>
-            <p class="project-desc">Proyek pengembangan web mobile-first dengan tema JKT48 untuk mempelajari fundamental
-              antarmuka pengguna.</p>
-            <div class="project-tags tech-tags">
-              <span class="tech-tag">HTML</span>
-              <span class="tech-tag">Tailwind</span>
-              <span class="tech-tag">JavaScript</span>
-            </div>
-            <div class="project-links">
-              <a href="https://jkt48fans.vercel.app/" class="project-link-btn" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-              </a>
-              <a href="https://github.com/nicholasonearth/mobile-apps-sederhana-jkt48" class="project-link-btn"
-                target="_blank">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-            </div>
+          <div class="project-visual">
+            <img src="assets/img/JKT48.png" alt="JKT48 Web" class="gsap-parallax-img" />
           </div>
         </div>
 
-        <!-- Project 2: LifeHub -->
-        <div class="project-item reveal" data-category="Fullstack">
-          <div class="project-thumbnail">
-            <img src="assets/img/LifeHub.png" alt="LifeHub" />
+        <!-- Project 2 -->
+        <div class="project-card gsap-project">
+          <div class="project-info">
+            <span class="font-display text-accent">Fullstack</span>
+            <h3 class="text-h3" style="margin-top: var(--space-xs); margin-bottom: var(--space-sm);">LifeHub</h3>
+            <p class="text-body">Aplikasi fullstack untuk manajemen tugas, jurnal, dan analisis produktivitas dengan sistem gamifikasi RPG (Level & XP).</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">Tailwind</span>
+            </div>
+            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+              <a href="https://life-hub-fe-fkc8.vercel.app/" class="btn btn-primary magnetic" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              <a href="https://github.com/nicholasonearth/Life_Hub-Fe" class="btn btn-outline magnetic" target="_blank"><i class="fab fa-github"></i> Frontend</a>
+              <a href="https://github.com/nicholasonearth/Life_Hub-Web_App" class="btn btn-outline magnetic" target="_blank"><i class="fab fa-github"></i> Backend</a>
+            </div>
           </div>
-          <div class="project-body">
-            <p class="project-category">Fullstack</p>
-            <h3 class="project-title">LifeHub</h3>
-            <p class="project-desc">Aplikasi fullstack untuk manajemen tugas, jurnal, dan analisis produktivitas dengan
-              sistem gamifikasi RPG (Level &amp; XP).</p>
-            <div class="project-tags tech-tags">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Laravel</span>
-              <span class="tech-tag">Tailwind</span>
-            </div>
-            <div class="project-links">
-              <a href="https://life-hub-fe-fkc8.vercel.app/" class="project-link-btn" target="_blank">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-              </a>
-              <a href="https://github.com/nicholasonearth/Life_Hub-Fe" class="project-link-btn" target="_blank">
-                <i class="fab fa-github"></i> Frontend
-              </a>
-              <a href="https://github.com/nicholasonearth/Life_Hub-Web_App" class="project-link-btn" target="_blank">
-                <i class="fab fa-github"></i> Backend
-              </a>
-            </div>
+          <div class="project-visual">
+            <img src="assets/img/LifeHub.png" alt="LifeHub" class="gsap-parallax-img" />
           </div>
         </div>
 
-        <!-- Project 3: Stunting AI -->
-        <div class="project-item reveal" data-category="Machine Learning">
-          <div class="project-thumbnail">
-            <img src="assets/img/MachineLearning.png" alt="Stunting AI" />
+        <!-- Project 3 -->
+        <div class="project-card gsap-project">
+          <div class="project-info">
+            <span class="font-display text-accent">Machine Learning</span>
+            <h3 class="text-h3" style="margin-top: var(--space-xs); margin-bottom: var(--space-sm);">Stunting Risk Prediction AI</h3>
+            <p class="text-body">Model ML menggunakan Random Forest & XGBoost untuk memprediksi risiko stunting dengan akurasi 78.41%.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Google Collab</span>
+            </div>
+            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-sm);">
+              <a href="assets/docs/DataAnak.ipynb" class="btn btn-outline magnetic" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
           </div>
-          <div class="project-body">
-            <p class="project-category">Machine Learning</p>
-            <h3 class="project-title">Stunting Risk Prediction AI</h3>
-            <p class="project-desc">Model ML menggunakan Random Forest &amp; XGBoost untuk memprediksi risiko stunting
-              dengan akurasi 78.41%.</p>
-            <div class="project-tags tech-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Google Collab</span>
-            </div>
-            <div class="project-links">
-              <a href="assets/docs/DataAnak.ipynb" class="project-link-btn">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-            </div>
+          <div class="project-visual">
+            <img src="assets/img/MachineLearning.png" alt="Stunting AI" class="gsap-parallax-img" />
           </div>
         </div>
 
-        <!-- Project 4: Holographic Controller -->
-        <div class="project-item reveal" data-category="Computer Vision">
-          <div class="project-thumbnail">
-            <img src="assets/img/NecroDungeon.png" alt="Holographic AI Controller" />
+        <!-- Project 4 -->
+        <div class="project-card gsap-project">
+          <div class="project-info">
+            <span class="font-display text-accent">Computer Vision</span>
+            <h3 class="text-h3" style="margin-top: var(--space-xs); margin-bottom: var(--space-sm);">Holographic AI Controller</h3>
+            <p class="text-body">Sistem kontrol game revolusioner tanpa perangkat fisik. Menggunakan AI Hand Tracking untuk navigasi virtual analog (L-DRIVE) dan presisi bidikan absolut 1:1 (R-DRIVE).</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">MediaPipe</span>
+              <span class="tag">Pynput</span>
+            </div>
+            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-sm);">
+              <a href="https://github.com/nicholasonearth/Holographic_Controller_Collab_With_DivisionGameDNCC" class="btn btn-outline magnetic" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
           </div>
-          <div class="project-body">
-            <p class="project-category">Computer Vision</p>
-            <h3 class="project-title">Holographic AI Controller</h3>
-            <p class="project-desc">Sistem kontrol game revolusioner tanpa perangkat fisik. Menggunakan AI Hand Tracking
-              untuk navigasi virtual analog (L-DRIVE) dan presisi bidikan absolut 1:1 (R-DRIVE).</p>
-            <div class="project-tags tech-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">OpenCV</span>
-              <span class="tech-tag">MediaPipe</span>
-              <span class="tech-tag">Pynput</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/nicholasonearth/Holographic_Controller_Collab_With_DivisionGameDNCC"
-                class="project-link-btn" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-            </div>
+          <div class="project-visual">
+            <img src="assets/img/NecroDungeon.png" alt="Holographic AI Controller" class="gsap-parallax-img" />
           </div>
         </div>
 
@@ -317,455 +252,348 @@
     </div>
   </section>
 
-  <hr class="section-divider" />
-
-
-  <!-- ═══ 03 / EXPERIENCE ═══ -->
-  <section id="experience" class="section">
+  <!-- ═══ 04 / EXPERIENCE & ORG ═══ -->
+  <section id="experience" class="section" style="background-color: var(--c-card);">
     <div class="container">
-      <div class="section-header">
-        <span class="section-number reveal">03 / Experience</span>
-        <h2 class="heading-lg reveal">Perjalanan &amp; Pengalaman</h2>
-        <p class="body-lg reveal">Riwayat pendidikan, profesional, dan organisasi yang membentuk kompetensi saya.</p>
+      <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h2 class="text-h2">Perjalanan & Pengalaman</h2>
+        <p class="text-body-lg">Riwayat pendidikan, profesional, dan organisasi yang membentuk kompetensi saya.</p>
       </div>
-
-      <!-- Education Timeline -->
-      <div class="experience-subsection reveal">
-        <h3 class="subsection-title">Riwayat Akademik</h3>
-
-        <div class="experience-layout">
-          <!-- Left: descriptive text -->
-          <div>
-            <p class="body-lg" style="margin-bottom: 16px;">Perjalanan pendidikan formal yang membentuk fondasi keilmuan
-              saya.</p>
+      
+      <!-- Education -->
+      <div style="margin-bottom: var(--space-xxl);">
+        <h3 class="font-display text-h3" style="margin-bottom: var(--space-md);">Riwayat Akademik</h3>
+        <p class="text-body-lg" style="margin-bottom: var(--space-lg);">Perjalanan pendidikan formal yang membentuk fondasi keilmuan saya.</p>
+        
+        <div class="timeline">
+          <!-- PT -->
+          <div class="timeline-item gsap-timeline">
+            <span class="timeline-date">2025 – Sekarang</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">Universitas Dian Nuswantoro</h4>
+            <p class="text-body">S1 Fakultas Ilmu Komputer / Teknik Informatika</p>
+            <span class="tag" style="background-color: var(--c-accent); color: #fff; border: none; margin-top: 8px; display: inline-block;">Aktif</span>
           </div>
 
-          <!-- Right: Timeline -->
-          <div>
-            <div class="timeline">
-              <!-- SD -->
-              <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2013 – 2018</div>
-                <div class="timeline-title">Sekolah Dasar</div>
-                <div class="timeline-subtitle">SD Yadika 3 — Kota Tangerang</div>
-                <span class="timeline-badge graduated">Lulus</span>
+          <!-- SMK -->
+          <div class="timeline-item gsap-timeline">
+            <span class="timeline-date">2021 – 2025</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">SMK Walisongo Semarang</h4>
+            <p class="text-body" style="margin-bottom: 8px;">Teknik Jaringan Komputer & Telekomunikasi</p>
+            <span class="tag" style="margin-bottom: 12px; display: inline-block;">Lulus</span>
+            
+            <div style="background-color: var(--c-bg); padding: var(--space-sm); border-radius: var(--radius-sm); border: 1px solid var(--c-border); margin-top: var(--space-sm);">
+              <div style="margin-bottom: 12px;">
+                <strong class="font-display">Siswa Berprestasi</strong>
+                <p class="text-body" style="font-size: 0.875rem;">Penghargaan atas dedikasi dan prestasi akademik terbaik</p>
               </div>
-
-              <!-- SMP -->
-              <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2018 – 2021</div>
-                <div class="timeline-title">Sekolah Menengah Pertama</div>
-                <div class="timeline-subtitle">SMP Negeri 24 Tangerang — Kota Tangerang</div>
-                <span class="timeline-badge graduated">Lulus</span>
+              <div style="margin-bottom: 12px;">
+                <strong class="font-display">PT Telkom Akses (Simpang Lima) | Divisi Digitalisasi SPBU</strong>
+                <p class="text-body" style="font-size: 0.875rem;">Sebagai Technical Support Specialist Intern di PT Telkom Akses (Januari – Mei 2024), saya mendukung operasional infrastruktur IT dan pemeliharaan jaringan pada proyek digitalisasi SPBU.</p>
               </div>
-
-              <!-- SMK -->
-              <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">2021 – 2025</div>
-                <div class="timeline-title">Sekolah Menengah Kejuruan</div>
-                <div class="timeline-subtitle">SMK Walisongo Semarang — Teknik Jaringan Komputer &amp; Telekomunikasi
-                </div>
-                <span class="timeline-badge graduated">Lulus</span>
-
-                <div class="timeline-achievements">
-                  <div class="timeline-achievement">
-                    <div class="timeline-achievement-title">Siswa Berprestasi</div>
-                    <div class="timeline-achievement-desc">Penghargaan atas dedikasi dan prestasi akademik terbaik</div>
-                  </div>
-                  <div class="timeline-achievement">
-                    <div class="timeline-achievement-title">PT Telkom Akses (Simpang Lima) | Divisi Digitalisasi SPBU
-                    </div>
-                    <div class="timeline-achievement-desc">Sebagai Technical Support Specialist Intern di PT Telkom
-                      Akses (Januari – Mei 2024), saya mendukung operasional infrastruktur IT dan pemeliharaan jaringan
-                      pada proyek digitalisasi SPBU.</div>
-                  </div>
-                  <div class="timeline-achievement">
-                    <div class="timeline-achievement-title">Peraih Prestasi Tercepat dalam Uji Kompetensi Kejuruan
-                      (UKK)</div>
-                    <div class="timeline-achievement-desc">Diakui sebagai peserta dengan penyelesaian tugas tercepat
-                      pada Uji Kompetensi Keahlian (UKK) di bidang Teknik Jaringan Komputer dan Telekomunikasi.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Perguruan Tinggi -->
-              <div class="timeline-item reveal">
-                <div class="timeline-dot active"></div>
-                <div class="timeline-date">2025 – Sekarang</div>
-                <div class="timeline-title">Perguruan Tinggi</div>
-                <div class="timeline-subtitle">Universitas Dian Nuswantoro — S1 Fakultas Ilmu Komputer / Teknik
-                  Informatika</div>
-                <span class="timeline-badge current">Aktif</span>
+              <div>
+                <strong class="font-display">Peraih Prestasi Tercepat dalam Uji Kompetensi Kejuruan (UKK)</strong>
+                <p class="text-body" style="font-size: 0.875rem;">Diakui sebagai peserta dengan penyelesaian tugas tercepat pada Uji Kompetensi Keahlian (UKK) di bidang Teknik Jaringan Komputer dan Telekomunikasi.</p>
               </div>
             </div>
+          </div>
+
+          <!-- SMP -->
+          <div class="timeline-item gsap-timeline">
+            <span class="timeline-date">2018 – 2021</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">Sekolah Menengah Pertama</h4>
+            <p class="text-body">SMP Negeri 24 Tangerang — Kota Tangerang</p>
+            <span class="tag" style="margin-top: 8px; display: inline-block;">Lulus</span>
+          </div>
+
+          <!-- SD -->
+          <div class="timeline-item gsap-timeline">
+            <span class="timeline-date">2013 – 2018</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">Sekolah Dasar</h4>
+            <p class="text-body">SD Yadika 3 — Kota Tangerang</p>
+            <span class="tag" style="margin-top: 8px; display: inline-block;">Lulus</span>
           </div>
         </div>
       </div>
 
       <!-- Work Experience -->
-      <div class="experience-subsection reveal">
-        <h3 class="subsection-title">Pengalaman Kerja</h3>
-
-        <div class="exp-card">
-          <div class="exp-header">
+      <div style="margin-bottom: var(--space-xxl);">
+        <h3 class="font-display text-h3" style="margin-bottom: var(--space-lg);">Pengalaman Kerja</h3>
+        
+        <div class="gsap-timeline" style="background-color: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: var(--space-md);">
+          <div class="flex-between" style="flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
             <div>
-              <div class="exp-company">PT Telkom Akses (Simpang Lima)</div>
-              <div class="exp-role">Technical Support Specialist Intern</div>
+              <h4 class="font-display" style="font-size: 1.5rem;">PT Telkom Akses (Simpang Lima)</h4>
+              <p class="text-accent" style="font-weight: 600;">Technical Support Specialist Intern</p>
             </div>
-            <div class="exp-meta">
-              <div class="exp-date">Januari 2024 – Mei 2024</div>
-              <div class="exp-location">Semarang</div>
+            <div style="text-align: right;">
+              <p class="font-display" style="font-weight: 600;">Januari 2024 – Mei 2024</p>
+              <p class="text-body" style="font-size: 0.875rem;">Semarang</p>
             </div>
           </div>
-          <ul class="exp-list">
-            <li>Mendukung operasional infrastruktur IT pada proyek digitalisasi SPBU untuk memastikan stabilitas sistem.
-            </li>
+          
+          <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--c-text-muted); margin-bottom: 1.5rem;">
+            <li>Mendukung operasional infrastruktur IT pada proyek digitalisasi SPBU untuk memastikan stabilitas sistem.</li>
             <li>Melakukan pemeliharaan dan dukungan teknis jaringan guna menjaga efisiensi operasional.</li>
-            <li>Mengaplikasikan keahlian Network Engineering dan telekomunikasi dalam lingkungan transformasi digital.
-            </li>
+            <li>Mengaplikasikan keahlian Network Engineering dan telekomunikasi dalam lingkungan transformasi digital.</li>
             <li>Mengasah kemampuan troubleshooting teknis dan kolaborasi tim dalam lingkungan korporasi.</li>
           </ul>
-          <div class="exp-tags tech-tags">
-            <span class="tech-tag">Network Engineering</span>
-            <span class="tech-tag">Troubleshooting</span>
-            <span class="tech-tag">IT Infrastructure</span>
-            <span class="tech-tag">Digital Transformation</span>
+
+          <div class="project-tags">
+            <span class="tag">Network Engineering</span>
+            <span class="tag">Troubleshooting</span>
+            <span class="tag">IT Infrastructure</span>
+            <span class="tag">Digital Transformation</span>
           </div>
         </div>
       </div>
 
       <!-- Organizations -->
-      <div class="experience-subsection reveal">
-        <h3 class="subsection-title">Organisasi</h3>
-
-        <div class="org-grid stagger">
+      <div>
+        <h3 class="font-display text-h3" style="margin-bottom: var(--space-lg);">Organisasi</h3>
+        
+        <div class="grid-2">
           <!-- DOSCOM -->
-          <div class="org-item">
-            <div class="org-date">2025 – Sekarang</div>
-            <div class="org-name">Dinus Open-source Community (DOSCOM)</div>
-            <div class="org-role">Divisi Data Science</div>
-            <p class="org-desc">Aktif dalam pengembangan berbasis data, berkolaborasi dalam proyek data science, serta
-              berkontribusi pada inisiatif komunitas untuk memperdalam pemahaman mengenai pengolahan dan analisis data.
-            </p>
-            <div class="org-tags tech-tags">
-              <span class="tech-tag">Data Science</span>
-              <span class="tech-tag">Python</span>
+          <div class="gsap-timeline" style="background-color: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: var(--space-md);">
+            <span class="text-meta" style="color: var(--c-text-muted); font-size: 0.875rem;">2025 – Sekarang</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">Dinus Open-source Community (DOSCOM)</h4>
+            <p class="text-accent" style="font-weight: 600; margin-bottom: 0.5rem;">Divisi Data Science</p>
+            <p class="text-body" style="margin-bottom: 1rem;">Aktif dalam pengembangan berbasis data, berkolaborasi dalam proyek data science, serta berkontribusi pada inisiatif komunitas untuk memperdalam pemahaman mengenai pengolahan dan analisis data.</p>
+            <div class="project-tags">
+              <span class="tag">Data Science</span>
+              <span class="tag">Python</span>
             </div>
           </div>
 
           <!-- DNCC -->
-          <div class="org-item">
-            <div class="org-date">2025 – Sekarang</div>
-            <div class="org-name">Dian Nuswantoro Computer Club (DNCC)</div>
-            <div class="org-role">Divisi Data Science</div>
-            <p class="org-desc">Berfokus pada analisis dan visualisasi data, mendalami konsep-konsep data science secara
-              praktis, serta turut serta dalam program pengembangan kompetensi teknologi bagi anggota.</p>
-            <div class="org-tags tech-tags">
-              <span class="tech-tag">Data Analytics</span>
-              <span class="tech-tag">Data Visualization</span>
+          <div class="gsap-timeline" style="background-color: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: var(--space-md);">
+            <span class="text-meta" style="color: var(--c-text-muted); font-size: 0.875rem;">2025 – Sekarang</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">Dian Nuswantoro Computer Club (DNCC)</h4>
+            <p class="text-accent" style="font-weight: 600; margin-bottom: 0.5rem;">Divisi Data Science</p>
+            <p class="text-body" style="margin-bottom: 1rem;">Berfokus pada analisis dan visualisasi data, mendalami konsep-konsep data science secara praktis, serta turut serta dalam program pengembangan kompetensi teknologi bagi anggota.</p>
+            <div class="project-tags">
+              <span class="tag">Data Analytics</span>
+              <span class="tag">Data Visualization</span>
             </div>
           </div>
 
           <!-- GDGoC -->
-          <div class="org-item">
-            <div class="org-date">2025 – Sekarang</div>
-            <div class="org-name">Google Developer Groups on Campus (GDGoC) UDINUS</div>
-            <div class="org-role">Member</div>
-            <p class="org-desc">Berpartisipasi aktif dalam berbagai kegiatan komunitas untuk memperluas jejaring
-              profesional, mengikuti workshop teknologi, serta meningkatkan pemahaman mengenai ekosistem pengembangan
-              perangkat lunak.</p>
-            <div class="org-tags tech-tags">
-              <span class="tech-tag">Networking</span>
-              <span class="tech-tag">Tech Community</span>
-              <span class="tech-tag">Software Development</span>
+          <div class="gsap-timeline" style="background-color: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: var(--space-md);">
+            <span class="text-meta" style="color: var(--c-text-muted); font-size: 0.875rem;">2025 – Sekarang</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">Google Developer Groups on Campus (GDGoC) UDINUS</h4>
+            <p class="text-accent" style="font-weight: 600; margin-bottom: 0.5rem;">Member</p>
+            <p class="text-body" style="margin-bottom: 1rem;">Berpartisipasi aktif dalam berbagai kegiatan komunitas untuk memperluas jejaring profesional, mengikuti workshop teknologi, serta meningkatkan pemahaman mengenai ekosistem pengembangan perangkat lunak.</p>
+            <div class="project-tags">
+              <span class="tag">Networking</span>
+              <span class="tag">Tech Community</span>
+              <span class="tag">Software Development</span>
             </div>
           </div>
 
           <!-- Basket -->
-          <div class="org-item">
-            <div class="org-date">2025 – Sekarang</div>
-            <div class="org-name">UKM Bola Basket</div>
-            <div class="org-role">Member</div>
-            <p class="org-desc">Mengembangkan disiplin diri, kerja sama tim, dan ketahanan fisik melalui partisipasi
-              rutin dalam latihan dan kompetisi basket. Kegiatan ini melatih kemampuan kepemimpinan serta manajemen
-              waktu.</p>
-            <div class="org-tags tech-tags">
-              <span class="tech-tag">Teamwork</span>
-              <span class="tech-tag">Leadership</span>
-              <span class="tech-tag">Sportsmanship</span>
+          <div class="gsap-timeline" style="background-color: var(--c-bg); border: 1px solid var(--c-border); border-radius: var(--radius-lg); padding: var(--space-md);">
+            <span class="text-meta" style="color: var(--c-text-muted); font-size: 0.875rem;">2025 – Sekarang</span>
+            <h4 class="font-display" style="font-size: 1.25rem;">UKM Bola Basket</h4>
+            <p class="text-accent" style="font-weight: 600; margin-bottom: 0.5rem;">Member</p>
+            <p class="text-body" style="margin-bottom: 1rem;">Mengembangkan disiplin diri, kerja sama tim, dan ketahanan fisik melalui partisipasi rutin dalam latihan dan kompetisi basket. Kegiatan ini melatih kemampuan kepemimpinan serta manajemen waktu.</p>
+            <div class="project-tags">
+              <span class="tag">Teamwork</span>
+              <span class="tag">Leadership</span>
+              <span class="tag">Sportsmanship</span>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══ 04 / TECHNICAL EXPERTISE ═══ -->
+  <!-- ═══ 05 / SKILLS & CERTS ═══ -->
   <section id="skills" class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-number reveal">04 / Technical Expertise</span>
-        <h2 class="heading-lg reveal">Skill &amp; Keahlian</h2>
-        <p class="body-lg reveal">Teknologi dan bidang yang saya kuasai dan terus saya kembangkan.</p>
+      <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h2 class="text-h2">Skill & Keahlian</h2>
+        <p class="text-body-lg">Teknologi dan bidang yang saya kuasai dan terus saya kembangkan.</p>
       </div>
 
-      <div class="skills-grid">
-        <!-- Column 1 -->
-        <div>
-          <!-- Data Science & ML -->
-          <div class="skill-category reveal">
-            <h3 class="skill-category-title">
-              <i class="fas fa-brain skill-category-icon"></i>Data Science &amp; Machine Learning
-            </h3>
-            <div class="skill-tags stagger">
-              <span class="skill-tag">Python for Data Science</span>
-              <span class="skill-tag">Scikit-learn</span>
-              <span class="skill-tag">TensorFlow</span>
-              <span class="skill-tag">Pandas</span>
-              <span class="skill-tag">NumPy</span>
-              <span class="skill-tag">Data Science Fundamentals</span>
-            </div>
-          </div>
-
-          <!-- Python Programming -->
-          <div class="skill-category reveal">
-            <h3 class="skill-category-title">
-              <i class="fab fa-python skill-category-icon"></i>Python Programming
-            </h3>
-            <div class="skill-tags stagger">
-              <span class="skill-tag">Python Core</span>
-              <span class="skill-tag">Automation &amp; Scripting</span>
-              <span class="skill-tag">Web Development (HTML/CSS/JS/PHP)</span>
-            </div>
+      <!-- Skills -->
+      <div class="skills-container" style="margin-bottom: var(--space-xxl);">
+        
+        <!-- ML -->
+        <div class="skill-box gsap-skill">
+          <h4 class="font-display" style="font-size: 1.25rem; margin-bottom: 1rem;"><i class="fas fa-brain text-accent"></i> Data Science & Machine Learning</h4>
+          <div class="project-tags">
+            <span class="tag">Python for Data Science</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Data Science Fundamentals</span>
           </div>
         </div>
 
-        <!-- Column 2 -->
-        <div>
-          <!-- Computer Networking -->
-          <div class="skill-category reveal">
-            <h3 class="skill-category-title">
-              <i class="fas fa-network-wired skill-category-icon"></i>Computer Networking
-            </h3>
-            <div class="skill-tags stagger">
-              <span class="skill-tag">Network Engineering &amp; Configuration</span>
-              <span class="skill-tag">Mikrotik &amp; Routing</span>
-              <span class="skill-tag">Network Security &amp; Firewall</span>
-              <span class="skill-tag">IT Infrastructure Management</span>
-            </div>
-          </div>
-
-          <!-- Data Visualization -->
-          <div class="skill-category reveal">
-            <h3 class="skill-category-title">
-              <i class="fas fa-chart-pie skill-category-icon"></i>Data Visualization &amp; Analysis
-            </h3>
-            <div class="skill-tags stagger">
-              <span class="skill-tag">Data Analytics &amp; Visualization</span>
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">Database Analysis</span>
-              <span class="skill-tag">Data-Driven Decision Making</span>
-            </div>
+        <!-- Python Programming -->
+        <div class="skill-box gsap-skill">
+          <h4 class="font-display" style="font-size: 1.25rem; margin-bottom: 1rem;"><i class="fab fa-python text-accent"></i> Python Programming</h4>
+          <div class="project-tags">
+            <span class="tag">Python Core</span>
+            <span class="tag">Automation & Scripting</span>
+            <span class="tag">Web Development (HTML/CSS/JS/PHP)</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <hr class="section-divider" />
+        <!-- Networking -->
+        <div class="skill-box gsap-skill">
+          <h4 class="font-display" style="font-size: 1.25rem; margin-bottom: 1rem;"><i class="fas fa-network-wired text-accent"></i> Computer Networking</h4>
+          <div class="project-tags">
+            <span class="tag">Network Engineering & Configuration</span>
+            <span class="tag">Mikrotik & Routing</span>
+            <span class="tag">Network Security & Firewall</span>
+            <span class="tag">IT Infrastructure Management</span>
+          </div>
+        </div>
 
+        <!-- Data Vis -->
+        <div class="skill-box gsap-skill">
+          <h4 class="font-display" style="font-size: 1.25rem; margin-bottom: 1rem;"><i class="fas fa-chart-pie text-accent"></i> Data Visualization & Analysis</h4>
+          <div class="project-tags">
+            <span class="tag">Data Analytics & Visualization</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Database Analysis</span>
+            <span class="tag">Data-Driven Decision Making</span>
+          </div>
+        </div>
 
-  <!-- ═══ 05 / CERTIFICATIONS ═══ -->
-  <section id="certifications" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-number reveal">05 / Certifications</span>
-        <h2 class="heading-lg reveal">Sertifikat &amp; Penghargaan</h2>
-        <p class="body-lg reveal">Bukti komitmen saya dalam pengembangan kompetensi secara berkelanjutan.</p>
       </div>
 
-      <div class="certs-grid stagger">
-        <!-- Dicoding: Website React -->
-        <div class="cert-card">
-          <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Belajar Membuat Aplikasi Web dengan React</div>
-          <div class="cert-year">2026</div>
-          <a href="https://www.dicoding.com/certificates/53XE16EW0ZRN" target="_blank" class="cert-link">Lihat
-            Sertifikat →</a>
+      <!-- Certifications -->
+      <div style="text-align: center; margin-bottom: var(--space-xl);">
+        <h2 class="text-h2" id="certifications">Sertifikat & Penghargaan</h2>
+        <p class="text-body-lg">Bukti komitmen saya dalam pengembangan kompetensi secara berkelanjutan.</p>
+      </div>
+
+      <div class="cert-grid">
+        <!-- 1 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Belajar Membuat Aplikasi Web dengan React</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Dicoding</p>
+          <a href="https://www.dicoding.com/certificates/53XE16EW0ZRN" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 2 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Belajar Dasar Data Science</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Dicoding</p>
+          <a href="https://www.dicoding.com/certificates/81P2OQNMNZOY" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 3 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Belajar Dasar Pemrograman Web</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Dicoding</p>
+          <a href="https://www.dicoding.com/certificates/6RPN729Y4X2M" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 4 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Belajar Dasar Pemrograman JavaScript</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Dicoding</p>
+          <a href="https://www.dicoding.com/certificates/QLZ995GN9Z5D" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 5 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Belajar Penerapan Data Science dengan Microsoft Fabric</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Dicoding</p>
+          <a href="https://www.dicoding.com/certificates/JMZVO70EQXN9" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 6 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2025</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Basic Training For Next Generation</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">DNCC</p>
+          <a href="assets/img/SertifikatBTNG.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 7 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2025</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">National Seminar on Informatics Engineering</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Informatics Student Association</p>
+          <a href="assets/img/SertifikatSemnasti.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 8 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2025</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">UKK Competency Certificate</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Walisongo Vocational High School</p>
+          <a href="assets/img/SertifikatUKK.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 9 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2025</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Vocational Competency Test (UKK)</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">APTII / SMK Walisongo</p>
+          <a href="assets/img/SertifikatNilaiUKK.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 10 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2024</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Praktik Kerja Lapangan (PKL)</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">PT Telkom Akses</p>
+          <a href="assets/img/SertifikatPKLTelkom.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 11 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2019</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Windows & Microsoft Office Package</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Sabar Parade Wedya</p>
+          <a href="assets/img/SertifikatPaketWindows.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 12 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2019</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">General English - Basic</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">Sabar Parade Wedya</p>
+          <a href="assets/img/SertifikatPaketEnglish.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 13 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Release Party Participants 2026</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">DOSCOM</p>
+          <a href="assets/img/SertifikatRP2026Peserta.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
+        </div>
+        <!-- 14 -->
+        <div class="cert-card gsap-cert magnetic">
+          <span class="cert-year">2026</span>
+          <h4 class="font-display" style="font-size: 1.125rem; margin-bottom: 0.5rem;">Release Party Crew 2026</h4>
+          <p class="text-body" style="font-size: 0.875rem; flex-grow: 1;">DOSCOM</p>
+          <a href="assets/img/SertifikatRP2026Crew.png" target="_blank" class="text-accent" style="font-weight: 600; font-size: 0.875rem; margin-top: 1rem;">Lihat Sertifikat →</a>
         </div>
 
-        <!-- Dicoding: Data Science -->
-        <div class="cert-card">
-          <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Belajar Dasar Data Science</div>
-          <div class="cert-year">2026</div>
-          <a href="https://www.dicoding.com/certificates/81P2OQNMNZOY" target="_blank" class="cert-link">Lihat
-            Sertifikat →</a>
-        </div>
-
-
-
-        <!-- Dicoding: Web -->
-        <div class="cert-card">
-          <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Belajar Dasar Pemrograman Web</div>
-          <div class="cert-year">2026</div>
-          <a href="https://www.dicoding.com/certificates/6RPN729Y4X2M" target="_blank" class="cert-link">Lihat
-            Sertifikat →</a>
-        </div>
-
-        <!-- Dicoding: JavaScript -->
-        <div class="cert-card">
-          <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Belajar Dasar Pemrograman JavaScript</div>
-          <div class="cert-year">2026</div>
-          <a href="https://www.dicoding.com/certificates/QLZ995GN9Z5D" target="_blank" class="cert-link">Lihat
-            Sertifikat →</a>
-        </div>
-
-        <!-- Dicoding: Microsoft Fabric -->
-        <div class="cert-card">
-          <div class="cert-issuer">Dicoding</div>
-          <div class="cert-name">Belajar Penerapan Data Science dengan Microsoft Fabric</div>
-          <div class="cert-year">2026</div>
-          <a href="https://www.dicoding.com/certificates/JMZVO70EQXN9" target="_blank" class="cert-link">Lihat
-            Sertifikat →</a>
-        </div>
-
-        <!-- BTNG DNCC -->
-        <div class="cert-card">
-          <div class="cert-issuer">DNCC</div>
-          <div class="cert-name">Basic Training For Next Generation</div>
-          <div class="cert-year">2025</div>
-          <a href="assets/img/SertifikatBTNG.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- SEMNASTI -->
-        <div class="cert-card">
-          <div class="cert-issuer">Informatics Student Association</div>
-          <div class="cert-name">National Seminar on Informatics Engineering</div>
-          <div class="cert-year">2025</div>
-          <a href="assets/img/SertifikatSemnasti.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- UKK Competency -->
-        <div class="cert-card">
-          <div class="cert-issuer">Walisongo Vocational High School</div>
-          <div class="cert-name">UKK Competency Certificate</div>
-          <div class="cert-year">2025</div>
-          <a href="assets/img/SertifikatUKK.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- UKK Score -->
-        <div class="cert-card">
-          <div class="cert-issuer">APTII / SMK Walisongo</div>
-          <div class="cert-name">Vocational Competency Test (UKK)</div>
-          <div class="cert-year">2025</div>
-          <a href="assets/img/SertifikatNilaiUKK.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- PKL Telkom -->
-        <div class="cert-card">
-          <div class="cert-issuer">PT Telkom Akses</div>
-          <div class="cert-name">Praktik Kerja Lapangan (PKL)</div>
-          <div class="cert-year">2024</div>
-          <a href="assets/img/SertifikatPKLTelkom.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- Windows & Office -->
-        <div class="cert-card">
-          <div class="cert-issuer">Sabar Parade Wedya</div>
-          <div class="cert-name">Windows &amp; Microsoft Office Package</div>
-          <div class="cert-year">2019</div>
-          <a href="assets/img/SertifikatPaketWindows.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- English Course -->
-        <div class="cert-card">
-          <div class="cert-issuer">Sabar Parade Wedya</div>
-          <div class="cert-name">General English - Basic</div>
-          <div class="cert-year">2019</div>
-          <a href="assets/img/SertifikatPaketEnglish.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- Release Party 2026 -->
-        <div class="cert-card">
-          <div class="cert-issuer">DOSCOM</div>
-          <div class="cert-name">Release Party Participants 2026</div>
-          <div class="cert-year">2026</div>
-          <a href="assets/img/SertifikatRP2026Peserta.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
-
-        <!-- Release Party 2026 -->
-        <div class="cert-card">
-          <div class="cert-issuer">DOSCOM</div>
-          <div class="cert-name">Release Party Crew 2026</div>
-          <div class="cert-year">2026</div>
-          <a href="assets/img/SertifikatRP2026Crew.png" target="_blank" class="cert-link">Lihat Sertifikat →</a>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- ═══ 06 / CONTACT ═══ -->
-  <section id="contact" class="section">
-    <div class="container">
-      <span class="section-number reveal">06 / Let's Build Something Together</span>
-
-      <div class="contact-grid">
-        <!-- Left: Heading + CTA -->
-        <div class="reveal-left">
-          <h2 class="contact-heading">Mari<br>Terhubung.</h2>
-          <p class="contact-desc">Saya terbuka untuk diskusi, peluang magang, kolaborasi proyek, atau sekadar berbagi
-            ide seputar teknologi dan data. Jangan ragu untuk menghubungi saya!</p>
-          <div class="contact-actions">
-            <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn-primary">
-              <i class="fas fa-download"></i> Download CV
-            </a>
-            <a href="https://wa.me/6289609100808" target="_blank" class="btn-secondary">
-              <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: Contact Links -->
-        <div class="contact-links reveal-right">
-          <a href="https://wa.me/6289609100808" target="_blank" class="contact-link-item">
-            <span class="contact-link-label"><i class="fab fa-whatsapp" style="margin-right: 12px;"></i>WhatsApp</span>
-            <span class="contact-link-icon"><i class="fas fa-arrow-right"></i></span>
-          </a>
-
-          <button onclick="copyToClipboard('nicholasdevin9@gmail.com', 'Email disalin!')" class="contact-link-item">
-            <span class="contact-link-label"><i class="fas fa-envelope" style="margin-right: 12px;"></i>Email</span>
-            <span class="contact-link-icon"><i class="fas fa-copy"></i></span>
-          </button>
-
-          <a href="https://github.com/nicholasonearth" target="_blank" class="contact-link-item">
-            <span class="contact-link-label"><i class="fab fa-github" style="margin-right: 12px;"></i>GitHub</span>
-            <span class="contact-link-icon"><i class="fas fa-arrow-right"></i></span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/nicholas-devin-daniardi-806979344/" target="_blank"
-            class="contact-link-item">
-            <span class="contact-link-label"><i class="fab fa-linkedin-in"
-                style="margin-right: 12px;"></i>LinkedIn</span>
-            <span class="contact-link-icon"><i class="fas fa-arrow-right"></i></span>
-          </a>
-        </div>
+  <section id="contact" class="footer">
+    <div class="footer-huge-text gsap-footer-text">LET'S TALK</div>
+    <div class="container" style="position: relative; z-index: 10;">
+      <h2 class="text-h2">Mari Terhubung!</h2>
+      <p class="text-body-lg" style="margin: var(--space-md) auto; max-width: 600px;">
+        Saya terbuka untuk diskusi, peluang magang, kolaborasi proyek, atau sekadar berbagi ide seputar teknologi dan data. Jangan ragu untuk menghubungi saya!
+      </p>
+      <div class="social-links">
+        <a href="assets/docs/CVats.pdf" onclick="downloadCV(event)" class="btn btn-primary magnetic" style="margin-right: 12px;">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+        <a href="https://wa.me/6289609100808" target="_blank" class="social-link magnetic" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <button onclick="copyToClipboard('nicholasdevin9@gmail.com', 'Email disalin!')" class="social-link magnetic" title="Email"><i class="fas fa-envelope"></i></button>
+        <a href="https://github.com/nicholasonearth" target="_blank" class="social-link magnetic" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/nicholas-devin-daniardi-806979344/" target="_blank" class="social-link magnetic" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
       </div>
+      <p class="font-display" style="margin-top: var(--space-xl); color: var(--c-text-muted);">© 2026 NICHOLAS DEVIN DANIARDI.</p>
     </div>
   </section>
-
-
-  <!-- Back to Top -->
-  <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <i class="fas fa-arrow-up"></i>
-  </button>
 
   <script src="assets/js/script.js"></script>
 </body>
