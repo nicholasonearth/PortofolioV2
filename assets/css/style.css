@@ -1490,6 +1490,11 @@ ul, ol {
     justify-content: flex-start;
   }
 
+  .hero-photo-caption {
+    right: auto;
+    left: 0;
+  }
+
   .hero-photo {
     max-width: 320px;
   }
