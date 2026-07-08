@@ -1,43 +1,42 @@
 // ═══════════════════════════════════════════════════════
-// PLAYFUL STORYTELLING PORTFOLIO — JavaScript
-// Dark Mode, GSAP Animations
+// AWWWARDS-LEVEL NEO-MINIMALIST BENTO
+// Lenis Smooth Scroll, GSAP, Custom Cursor
 // ═══════════════════════════════════════════════════════
 
-// ── 1. DARK MODE TOGGLE ──
-const themeBtn = document.getElementById('theme-btn');
-const htmlEl = document.documentElement;
-
-// Check local storage or system preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  htmlEl.setAttribute('data-theme', savedTheme);
-} else {
-  // Default to dark as requested in HTML
-  htmlEl.setAttribute('data-theme', 'dark');
-}
-
-themeBtn.addEventListener('click', () => {
-  const currentTheme = htmlEl.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  
-  htmlEl.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  
-  // Icon switch
-  const icon = themeBtn.querySelector('i');
-  if (newTheme === 'dark') {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  } else {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  }
+// ── 1. PRELOADER ──
+window.addEventListener('load', () => {
+  const tlPreloader = gsap.timeline();
+  tlPreloader.to('.preloader-text', { yPercent: -100, opacity: 0, duration: 0.8, ease: 'power3.in', delay: 0.3 })
+             .to('.preloader', { yPercent: -100, duration: 0.8, ease: 'power3.inOut' }, '-=0.3')
+             .set('.preloader', { display: 'none' });
 });
 
-// Set initial icon state
-if (htmlEl.getAttribute('data-theme') === 'light') {
-  themeBtn.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+// ── 2. LENIS SMOOTH SCROLL ──
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  direction: 'vertical',
+  gestureDirection: 'vertical',
+  smooth: true,
+  mouseMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
+  infinite: false,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
+requestAnimationFrame(raf);
+
+// Integrate Lenis with GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time)=>{
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0, 0);
 
 
 // ── 3. NAVBAR SCROLL & MOBILE MENU ──
@@ -60,7 +59,6 @@ if (mobileMenuBtn && mobileDrawer) {
     isMenuOpen = !isMenuOpen;
     mobileDrawer.classList.toggle('open', isMenuOpen);
     
-    // Change icon
     const icon = mobileMenuBtn.querySelector('i');
     if (isMenuOpen) {
       icon.classList.remove('fa-bars');
@@ -71,7 +69,6 @@ if (mobileMenuBtn && mobileDrawer) {
     }
   });
 
-  // Close menu on link click
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', () => {
       isMenuOpen = false;
@@ -81,123 +78,80 @@ if (mobileMenuBtn && mobileDrawer) {
   });
 }
 
-// ── 4. GSAP ANIMATIONS ──
-gsap.registerPlugin(ScrollTrigger);
 
-// Hero Animation
-const tlHero = gsap.timeline();
-tlHero.from('.hero-tagline', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 })
-      .from('.text-hero', { y: 40, opacity: 0, duration: 1, ease: 'power4.out' }, '-=0.5')
-      .from('.hero .text-body-lg', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
-      .from('.hero-actions', { y: 20, opacity: 0, duration: 0.8 }, '-=0.6');
-
-// About Section
-gsap.from('.gsap-about-text > *', {
-  scrollTrigger: {
-    trigger: '#about',
-    start: 'top 80%',
-  },
-  y: 30,
-  opacity: 0,
-  stagger: 0.2,
-  duration: 1,
-  ease: 'power3.out'
-});
-
-gsap.from('.gsap-about-img', {
-  scrollTrigger: {
-    trigger: '#about',
-    start: 'top 80%',
-  },
-  x: 50,
-  opacity: 0,
-  duration: 1.2,
-  ease: 'power3.out'
-});
-
-// Projects (The Chapters) - Parallax Images & Fade Ups
-const projects = document.querySelectorAll('.gsap-project');
-projects.forEach((proj) => {
-  // Card Fade in
-  gsap.from(proj, {
+// ── 5. GSAP SCROLL REVEALS ──
+// Generic fade up
+const fadeUps = document.querySelectorAll('.gsap-fade-up');
+fadeUps.forEach(el => {
+  gsap.from(el, {
     scrollTrigger: {
-      trigger: proj,
+      trigger: el,
       start: 'top 85%',
     },
-    y: 50,
+    y: 40,
     opacity: 0,
-    duration: 0.8,
+    duration: 1,
     ease: 'power3.out'
   });
+});
+
+// Parallax Section Numbers
+const sectionNumbers = document.querySelectorAll('.section-number');
+sectionNumbers.forEach(num => {
+  gsap.to(num, {
+    yPercent: 30,
+    ease: "none",
+    scrollTrigger: {
+      trigger: num.parentElement,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+});
+
+
+// ── 6. SCROLLSPY (ACTIVE NAV LINKS) ──
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
   
-  // Subtle Parallax on Image inside Card
-  const img = proj.querySelector('.gsap-parallax-img');
-  if (img) {
-    gsap.to(img, {
-      yPercent: 15, // Moves down slightly as you scroll down
-      ease: "none",
-      scrollTrigger: {
-        trigger: proj,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= (sectionTop - sectionHeight / 3)) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (current && link.getAttribute('href').includes(current)) {
+      link.classList.add('active');
+    }
+  });
+});
+
+
+// ── 7. SMOOTH SCROLL (A TAGS) ──
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      if (typeof lenis !== 'undefined') {
+        lenis.scrollTo(target);
+      } else {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    });
-  }
+    }
+  });
 });
 
-// Experience Timeline
-gsap.from('.gsap-timeline', {
-  scrollTrigger: {
-    trigger: '#experience',
-    start: 'top 75%',
-  },
-  x: -30,
-  opacity: 0,
-  stagger: 0.15,
-  duration: 0.8,
-  ease: 'power2.out'
-});
 
-// Skills
-gsap.from('.gsap-skill', {
-  scrollTrigger: {
-    trigger: '#skills',
-    start: 'top 80%',
-  },
-  y: 30,
-  opacity: 0,
-  stagger: 0.1,
-  duration: 0.6,
-  ease: 'back.out(1.2)' // playful pop
-});
-
-// Certificates
-gsap.from('.gsap-cert', {
-  scrollTrigger: {
-    trigger: '#certifications',
-    start: 'top 80%',
-  },
-  y: 30,
-  opacity: 0,
-  stagger: 0.1,
-  duration: 0.6,
-  ease: 'power2.out'
-});
-
-// Footer Text Parallax
-gsap.to('.gsap-footer-text', {
-  yPercent: -50,
-  ease: "none",
-  scrollTrigger: {
-    trigger: '#contact',
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true
-  }
-});
-
-// ── 5. TOAST NOTIFICATION ──
+// ── 8. TOAST NOTIFICATION & FORM SIMULATION ──
 function showToast(msg) {
   const toast = document.getElementById('toast');
   if(toast) {
@@ -216,14 +170,3 @@ window.downloadCV = function(e) {
   showToast('📄 Mengunduh CV...');
   window.open('assets/docs/CVats.pdf', '_blank');
 }
-
-// ── 6. SMOOTH SCROLL ──
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
