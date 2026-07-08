@@ -690,16 +690,29 @@ ul, ol {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.03em;
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.05); /* Cyan subtle bg */
+  border: 1px solid rgba(6, 182, 212, 0.3);
   border-radius: 4px;
   transition: all var(--transition-base);
-  background: transparent;
+}
+
+.tech-tag:nth-child(even) {
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.05); /* Blue subtle bg */
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .tech-tag:hover {
-  color: var(--text-primary);
-  border-color: var(--text-primary);
+  background: var(--accent-cyan);
+  color: var(--bg-card);
+  border-color: var(--accent-cyan);
+}
+
+.tech-tag:nth-child(even):hover {
+  background: var(--accent);
+  color: var(--bg-card);
+  border-color: var(--accent);
 }
 
 
@@ -933,8 +946,9 @@ ul, ol {
 }
 
 .timeline-badge.current {
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.1); /* Subtle green bg */
+  border: 1px solid var(--success);
 }
 
 .timeline-achievements {
@@ -1296,7 +1310,46 @@ ul, ol {
 .contact-link-item:hover .contact-link-icon {
   transform: translateX(4px);
 }
+#contact {
+  background-color: var(--accent);
+  color: var(--bg-card);
+}
 
+#contact .section-number,
+#contact .contact-heading,
+#contact .contact-link-label {
+  color: var(--bg-card);
+}
+
+#contact .contact-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#contact .contact-link-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#contact .contact-link-item {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+#contact .btn-primary {
+  background-color: var(--bg-card);
+  color: var(--accent);
+}
+
+#contact .btn-primary:hover {
+  background-color: #E2E8F0;
+}
+
+#contact .btn-secondary {
+  border-color: var(--bg-card);
+  color: var(--bg-card);
+}
+
+#contact .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* ─── 17. FOOTER ─── */
 .footer {
