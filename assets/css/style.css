@@ -505,7 +505,7 @@ ul, ol {
   align-items: center;
   gap: 10px;
   padding: 14px 32px;
-  background: var(--text-primary);
+  background: var(--accent);
   color: #FFFFFF;
   font-family: var(--font-display);
   font-size: 14px;
@@ -513,12 +513,13 @@ ul, ol {
   letter-spacing: 0.02em;
   border-radius: 4px;
   transition: all var(--transition-base);
-  border: 1px solid var(--text-primary);
+  border: 1px solid var(--accent);
 }
 
 .btn-primary:hover {
-  background: transparent;
-  color: var(--text-primary);
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -528,18 +529,19 @@ ul, ol {
   gap: 10px;
   padding: 14px 32px;
   background: transparent;
-  color: var(--text-primary);
+  color: var(--accent-cyan);
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent-cyan);
   border-radius: 4px;
   transition: all var(--transition-base);
 }
 
 .btn-secondary:hover {
-  border-color: var(--text-primary);
+  background: var(--accent-cyan);
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -608,13 +610,13 @@ ul, ol {
 }
 
 .about-text .highlight {
-  color: var(--text-primary);
-  font-weight: 500;
+  color: var(--accent-cyan);
+  font-weight: 600;
 }
 
 .about-text .highlight-bold {
-  color: var(--text-primary);
-  font-weight: 600;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .about-info-row {
@@ -1166,6 +1168,39 @@ ul, ol {
 
 .skill-tag:hover {
   border-color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+#skills {
+  background-color: var(--accent);
+  color: var(--bg-card);
+}
+
+#skills .section-number,
+#skills .heading-lg,
+#skills .body-lg,
+#skills .skill-category-title,
+#skills .skill-tag {
+  color: var(--bg-card);
+}
+
+#skills .skill-category-title {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+#skills .skill-category-icon {
+  color: var(--accent-cyan);
+}
+
+#skills .skill-tag {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+}
+
+#skills .skill-tag:hover {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #101010; /* Dark text on bright cyan */
   transform: translateY(-2px);
 }
 
