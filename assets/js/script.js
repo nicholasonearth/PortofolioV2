@@ -165,6 +165,13 @@ window.copyToClipboard = function(text, msg) {
   navigator.clipboard.writeText(text).then(() => showToast(msg || 'Disalin!'));
 }
 
+const copyEmailButton = document.getElementById('copy-email-btn');
+if (copyEmailButton) {
+  copyEmailButton.addEventListener('click', () => {
+    window.copyToClipboard('nicholasdevin9@gmail.com', 'Email copied!');
+  });
+}
+
 window.downloadCV = function(e) {
   e.preventDefault();
   showToast('📄 Mengunduh CV...');
